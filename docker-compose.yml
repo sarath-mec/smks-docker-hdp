@@ -1,0 +1,12 @@
+version: '2'
+services:
+  postgres:
+    build: containers/postgres
+  ambari-server:
+    build: containers/ambari-server
+    links:
+     - postgres:postgres.dev
+  node:
+    build: containers/node
+    links:
+     - ambari-server:ambari-server.dev
