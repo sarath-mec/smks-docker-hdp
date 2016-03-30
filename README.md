@@ -55,7 +55,7 @@ if [ $(hostname) = "n1" ]; then
   docker build -t randerzander/node docker-hdp/containers/node
 
   docker run -d --net dev --name postgres randerzander/postgres
-  docker run -d -p 8080:8080 --net dev --name ambari-server randerzander/ambari-server /start.sh
+  docker run -d -p 8080:8080 --net dev --name ambari-server --hostname ambari-server.dev randerzander/ambari-server /start.sh
   docker run -d -P --net dev --name master0 --hostname master0.dev randerzander/node /start.sh
 fi
 
