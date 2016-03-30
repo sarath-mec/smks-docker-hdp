@@ -50,16 +50,22 @@ fi
 Start your containers:
 ```
 if [ $(hostname) = "n1" ]; then
+  docker build -t randerzander/postgres docker-hdp/containers/postgres
+  docker build -t randerzander/ambari-server docker-hdp/containers/ambari-server
+  docker build -t randerzander/node docker-hdp/containers/node
+
   docker run -d --net dev --name postgres randerzander/postgres
   docker run -d -p 8080:8080 --net dev --name ambari-server randerzander/ambari-server /start.sh
   docker run -d -P --net dev --name master0 --hostname master0.dev randerzander/node /start.sh
 fi
 
 if [ $(hostname) = "n2" ]; then
+  docker build -t randerzander/node docker-hdp/containers/node
   docker run -d -P --net dev --name dn0 --hostname dn0.dev randerzander/node /start.sh
 fi
 
 if [ $(hostname) = "n3" ]; then
+  docker build -t randerzander/node docker-hdp/containers/node
   docker run -d -P --net dev --name dn1 --hostname dn1.dev randerzander/node /start.sh
 fi
 ```
