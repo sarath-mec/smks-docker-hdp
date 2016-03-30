@@ -2,7 +2,7 @@ FROM centos
 RUN yum install -y wget
 RUN wget -nv http://public-repo-1.hortonworks.com/ambari/centos7/2.x/updates/2.2.1.1/ambari.repo -O /etc/yum.repos.d/ambari.repo
 RUN wget -nv http://public-repo-1.hortonworks.com/HDP/centos7/2.x/updates/2.4.0.0/hdp.repo -O /etc/yum.repos.d/hdp.repo
-RUN yum install -y sudo tar unzip curl openssl-devel mysql-connector-java postgresql-jdbc mysql-community-* krb5-server krb5-libs krb-auth-dialog krb5-workstation
+RUN yum install -y sudo tar unzip curl openssl-devel mysql-connector-java postgresql-jdbc krb5-server krb5-libs krb-auth-dialog krb5-workstation
 RUN yum install -y ambari-agent
 RUN yum install -y hadoop*
 RUN yum install -y zookeeper
