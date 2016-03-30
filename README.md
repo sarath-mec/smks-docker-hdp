@@ -70,4 +70,6 @@ if [ $(hostname) = "n3" ]; then
 fi
 ```
 
+When the above is complete, you should be able to access Ambari's web UI on $N1:8080 and install your cluster on nodes master0.dev, dn0.dev and dn1.dev
+
 TODO: Migrate the startup process to docker-compose.yml
