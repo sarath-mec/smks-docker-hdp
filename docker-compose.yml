@@ -4,9 +4,19 @@ services:
     build: containers/postgres
   ambari-server:
     build: containers/ambari-server
+    ports:
+     - "8080:8080"
+    depends_on:
+     - dns
     links:
      - postgres:postgres.dev
   node:
     build: containers/node
+    depends_on:
+     - dns
     links:
      - ambari-server:ambari-server.dev
+
+networks:
+  dev:
+    driver: overlay
