@@ -23,7 +23,7 @@ sudo systemctl daemon-reload
 sudo service docker restart
 ```
 
-Start your swarm:
+Start your swarm and create an overlay network:
 ```
 N1=192.168.1.1
 N2=192.168.1.2
@@ -34,6 +34,7 @@ if [ $(hostname) = "n1" ]; then
   #Start the swarm manager and swarm node
   docker run -d -p 4000:4000 swarm manage -H :4000 --replication --advertise $N1:4000 consul://$CONSUL
   docker run -d swarm join --advertise=$N1:2375 consul://$CONSUL
+  docker -H :4000 network create --driver overlay dev
 fi
 if [ $(hostname) = "n2" ]; then
   #Start the swarm failover manager, and swarm node
