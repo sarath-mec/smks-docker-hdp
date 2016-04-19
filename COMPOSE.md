@@ -1,6 +1,8 @@
 # docker-hdp
 Running an HDP cluster in docker containers with docker-compose
 
+First [install the latest version of docker-compose](https://docs.docker.com/compose/install/)
+
 # Running all containers on a single host
 ```
 docker-compose -f local.yml up
