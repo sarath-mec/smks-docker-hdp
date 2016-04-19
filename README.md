@@ -3,6 +3,8 @@ Dockerized HDP Cluster
 
 I have 3 physical nodes: a laptop (n1), a desktop (n2), and a server (n3)
 
+To create an HDP cluster using compose, see [here](COMPOSE.md).
+
 First [install the latest docker-engine](https://docs.docker.com/engine/installation/linux/centos/) (docker -v: 1.10 minimum) and Linux (uname -a: 3.10 minimum required for multi-host 'overlay' networking).
 
 Next [install the latest version of consul](https://www.consul.io/downloads.html) and start at least one agent in server mode:
@@ -72,5 +74,3 @@ fi
 ```
 
 When the above is complete, you should be able to access Ambari's web UI on $N1:8080 and install your cluster on nodes master0.dev, dn0.dev and dn1.dev
-
-TODO: Migrate the startup process to docker-compose.yml
