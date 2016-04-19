@@ -76,5 +76,7 @@ fi
 When the above is complete, you can access Ambari's web UI on $N1:8080 and configure your cluster.
 
 TODO:
+
 1. Create blueprints for automated cluster install post container startup
+
 2. Add the overlay 'dev' network to your machine's DNS
