@@ -13,3 +13,5 @@ echo "$DOCKER_VM_IP ambari-server ambari-server.dev" >> /etc/hosts
 echo "$DOCKER_VM_IP master0 master0.dev" >> /etc/hosts
 echo "$DOCKER_VM_IP dn0 dn0.dev" >> /etc/hosts
 ```
+
+After running the above, you should be able to access the Ambari web-ui at http://ambari-server.dev:8080
