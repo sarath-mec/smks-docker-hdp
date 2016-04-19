@@ -1,7 +1,5 @@
 # docker-hdp
-Dockerized HDP Cluster
-
-I have 3 physical nodes: a laptop (n1), a desktop (n2), and a server (n3)
+Dockerized HDP Cluster running on 3 physical nodes: a laptop (n1), a desktop (n2), and a server (n3)
 
 To create an HDP cluster using docker-compose, see [here](COMPOSE.md).
 
@@ -74,3 +72,5 @@ fi
 ```
 
 When the above is complete, you should be able to access Ambari's web UI on $N1:8080 and install your cluster on nodes master0.dev, dn0.dev and dn1.dev
+
+TODO: Create blueprints for automated cluster install post container startup
