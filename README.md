@@ -3,7 +3,7 @@ Dockerized HDP Cluster
 
 I have 3 physical nodes: a laptop (n1), a desktop (n2), and a server (n3)
 
-To create an HDP cluster using compose, see [here](COMPOSE.md).
+To create an HDP cluster using docker-compose, see [here](COMPOSE.md).
 
 First [install the latest docker-engine](https://docs.docker.com/engine/installation/linux/centos/) (docker -v: 1.10 minimum) and Linux (uname -a: 3.10 minimum required for multi-host 'overlay' networking).
 
