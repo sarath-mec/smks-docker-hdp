@@ -48,7 +48,9 @@ if [ $(hostname) = "n3" ]; then
 fi
 ```
 
-Start your containers:
+These containers don't live in dockerhub, so each node needs to build them locally.
+
+Run on each host to build and start your containers:
 ```
 if [ $(hostname) = "n1" ]; then
   docker build -t randerzander/postgres docker-hdp/containers/postgres
@@ -71,6 +73,8 @@ if [ $(hostname) = "n3" ]; then
 fi
 ```
 
-When the above is complete, you should be able to access Ambari's web UI on $N1:8080 and install your cluster on nodes master0.dev, dn0.dev and dn1.dev
+When the above is complete, you can access Ambari's web UI on $N1:8080 and configure your cluster.
 
-TODO: Create blueprints for automated cluster install post container startup
+TODO:
+1. Create blueprints for automated cluster install post container startup
+2. Add the overlay 'dev' network to your machine's DNS
