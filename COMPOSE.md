@@ -1,9 +1,9 @@
 # docker-hdp
 Running an HDP cluster in docker containers with docker-compose
 
-First [install the latest version of docker-compose](https://docs.docker.com/compose/install/)
+First [install the latest version of docker-compose](https://docs.docker.com/compose/install/).
 
-# Running all containers on a single host
+To run all containers on a single host:
 ```
 docker-compose -f local.yml up
 ```
@@ -17,3 +17,5 @@ echo "$DOCKER_VM_IP dn0 dn0.dev" >> /etc/hosts
 ```
 
 After running the above, you should be able to access the Ambari web-ui at http://ambari-server.dev:8080
+
+TODO: Above, but using docker-swarm for multi-host deployment
