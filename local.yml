@@ -4,6 +4,8 @@ services:
     build: containers/postgres
     networks:
      - dev
+    hostname: postgres
+    domainname: dev
   ambari-server.dev:
     build: containers/ambari-server
     networks:
@@ -58,7 +60,7 @@ services:
      - "6083:6083"
      - "6183:6183"
      # Kerberos
-     - "88:88"
+     #- "88:88"
   dn0.dev:
     build: containers/node
     networks:
