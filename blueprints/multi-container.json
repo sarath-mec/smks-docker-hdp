@@ -784,6 +784,8 @@
           "hive.compactor.delta.pct.threshold" : "0.1f",
           "hive.vectorized.execution.reduce.enabled" : "false",
           "javax.jdo.option.ConnectionDriverName" : "org.postgresql.Driver",
+          "javax.jdo.option.ConnectionUserName" : "hive",
+          "javax.jdo.option.ConnectionURL" : "jdbc:postgresql://postgres.dev:5432/hive",
           "hive.stats.dbclass" : "fs",
           "hive.exec.parallel" : "false",
           "hive.compactor.worker.threads" : "0",

@@ -1,5 +1,5 @@
 { "blueprint":"multi-container",
-"default_password" : "admin",
+"default_password" : "dev",
   "host_groups":[
     { "name":"host_group_1",
       "hosts":[ { "fqdn":"dn0.dev" } ]
