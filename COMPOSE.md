@@ -13,10 +13,10 @@ To have Ambari install components for you:
 sh scripts/submit-blueprint.sh
 ```
 
-If manually configuring your cluster, note that the ambari agents are configured to automatically register with ambari-server. Configure them during cluster install (password is 'dev') as indicated below:
+If manually configuring your cluster, note that the ambari agents are configured to automatically register with ambari-server. Configure them during cluster install as indicated below:
 ![cluster-hosts](/screenshots/cluster-hosts.png?raw=true)
 
-Additionally, postgres.dev has a pre-configured databases for Hive and Ranger. Configure Hive like the below:
+Additionally, postgres.dev has a pre-configured databases for Hive and Ranger. Configure Hive like the below (password is 'dev'):
 ![hive-setup](/screenshots/hive-setup.png?raw=true)
 
 If using Docker for Mac or Windows, add the following to your hosts file:
