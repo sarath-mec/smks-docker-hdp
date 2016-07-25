@@ -1,82 +1,74 @@
 # docker-hdp
-Dockerized HDP Cluster running on 3 physical nodes: a laptop (n1), a desktop (n2), and a server (n3)
 
-To create an HDP cluster using docker-compose, see [here](COMPOSE.md).
+The below has been tested and works on the latest [Docker for Mac](https://docs.docker.com/engine/installation/mac/#/docker-for-mac).
 
-First [install the latest docker-engine](https://docs.docker.com/engine/installation/linux/centos/) (docker -v: 1.10 minimum) and Linux (uname -a: 3.10 minimum required for multi-host 'overlay' networking).
-
-Next [install the latest version of consul](https://www.consul.io/downloads.html) and start at least one agent in server mode:
+These containers are not pushed to DockerHub, thus you'll need to build them locally:
 ```
-consul agent -server -data-dir /tmp/consul -bootstrap -bind $N1 -client $N1 > ~/consul-server.log & 2>&1
+docker-compose -f examples/compose/single-container.yml build
 ```
 
-Edit your /etc/systemd/system/docker.service.d/docker.conf to work with your consul server. Set each host's --cluster-advertise val according to its IP address.
+A successful build looks like:
 ```
-[Service]
-ExecStart=
-ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:2375 --cluster-store consul://192.168.1.1:8500 --cluster-advertise 192.168.1.1:2375
-```
-
-Restart systemctl and the docker service to pick up the changes
-```
-sudo systemctl daemon-reload
-sudo service docker restart
+docker-hdp randy> docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+hdp/node            latest              cacb20b1b0d3        15 seconds ago      7.682 GB
+hdp/ambari-server   latest              b0fad41dd49c        15 minutes ago      2.492 GB
+hdp/postgres        latest              ad42250d5c8b        23 minutes ago      320.2 MB
+centos              6                   cf2c3ece5e41        3 weeks ago         194.6 MB
+postgres            latest              7ee9d2061970        6 weeks ago         275.3 MB
 ```
 
-Start your swarm and create an overlay network:
+##Running HDP 2.5 Tech Preview:
+To run 3 containers (postgres, ambari-server, and a single container HDP cluster):
 ```
-N1=192.168.1.1
-N2=192.168.1.2
-N3=192.168.1.3
-CONSUL=$N1:8500
-
-if [ $(hostname) = "n1" ]; then
-  #Start the swarm manager and swarm node
-  docker run -d -p 4000:4000 swarm manage -H :4000 --replication --advertise $N1:4000 consul://$CONSUL
-  docker run -d swarm join --advertise=$N1:2375 consul://$CONSUL
-  docker -H :4000 network create --driver overlay dev
-fi
-if [ $(hostname) = "n2" ]; then
-  #Start the swarm failover manager, and swarm node
-  docker run -d -p 4000:4000 swarm manage -H :4000 --replication --advertise $N2:4000 consul://$CONSUL
-  docker run -d swarm join --advertise=$N2:2375 consul://$CONSUL
-fi
-
-if [ $(hostname) = "n3" ]; then
-  #Start the swarm node
-  docker run -d swarm join --advertise=$N3:2375 consul://$CONSUL
-fi
+docker-compose -f examples/compose/single-container.yml up
 ```
 
-These containers don't live in dockerhub, so each node needs to build them locally.
+After a minute or so, you should be able to access Ambari's Web UI at localhost:8080. Default User/PW is admin/admin as usual.
 
-Run on each host to build and start your containers:
+##Using Ambari Blueprints:
+To snapshot your cluster's configuration into a blueprint:
 ```
-if [ $(hostname) = "n1" ]; then
-  docker build -t randerzander/postgres docker-hdp/containers/postgres
-  docker build -t randerzander/ambari-server docker-hdp/containers/ambari-server
-  docker build -t randerzander/node docker-hdp/containers/node
-
-  docker run -d --net dev --name postgres randerzander/postgres
-  docker run -d -p 8080:8080 --net dev --name ambari-server --hostname ambari-server.dev randerzander/ambari-server /start.sh
-  docker run -d -P --net dev --name master0 --hostname master0.dev randerzander/node /start.sh
-fi
-
-if [ $(hostname) = "n2" ]; then
-  docker build -t randerzander/node docker-hdp/containers/node
-  docker run -d -P --net dev --name dn0 --hostname dn0.dev randerzander/node /start.sh
-fi
-
-if [ $(hostname) = "n3" ]; then
-  docker build -t randerzander/node docker-hdp/containers/node
-  docker run -d -P --net dev --name dn1 --hostname dn1.dev randerzander/node /start.sh
-fi
+# You can extract a blueprint as soon as you click Deploy. No need to wait for install to complete.
+curl --user admin:admin -H 'X-Requested-By:admin' localhost:8080/api/v1/clusters/dev?format=blueprint > examples/blueprints/single-container.json 
 ```
 
-When the above is complete, you can access Ambari's web UI on $N1:8080 and configure your cluster.
+To submit your blueprint to Ambari and have it install your cluster:
+```
+# Can swap "single-container" for multi-container, or any type saved in examples/blueprints and examples/hostgroups
+sh submit-blueprint.sh single-container
+```
+
+##Notes:
+1. Ambari, Hive, and Ranger dbs have been pre-created in the postgres database running at postgres.dev. To configure them in Ambari, set Postgres as the DB type and leave everything else as the default options. The password for the dbs are all "dev". (Example)[screenshots/hive-setup.png?raw=true]
+2. The "node" container can be used for master, worker, or both types of services. The ambari-agent is configured to register with ambari-server.dev automatically, thus no SSH key setup is necessary. (Example)[screenshots/cluster-hosts.png?raw=true]
+3. Yum packages for all HDP services have been pre-installed in the "node" container. This lets cluster install take place much faster at the expense of a spurious warning from Ambari during Host-Checks.
+4. The postgres container downloads the Ambari DB DDL from GitHub during build. If you want to use a different version of Ambari, make sure to update the branch URL to match your chosen version number.
+
+##Helpful Hints:
+
+Docker for Mac sometimes has storage space problems. I recommend adding the following to your ~/.bash_profile and restarting terminal:
+```
+function docker-cleanup(){
+ # remove untagged images  
+ docker rmi $(docker images | grep none | awk '{ print $3}')
+ # remove unused volumes  
+ docker volume rm $(docker volume ls -q )  
+ # `shotgun` remove unused networks
+ docker network rm $(docker network ls | grep "_default")   
+ # remove stopped + exited containers, I skip Exit 0 as I have old scripts using data containers.
+ docker rm -v $(docker ps -a | grep "Exit [0-255]" | awk '{ print $1 }')
+}
+```
+
+Run "docker-cleanup" if you run into Docker errors or "No space left on device" issues inside containers.
+
+Since Hadoop UIs often link to hostnames, add the following to your hosts file:
+```
+echo "127.0.0.1 ambari-server ambari-server.dev" >> /etc/hosts
+echo "127.0.0.1 master0 master0.dev" >> /etc/hosts
+echo "127.0.0.1 dn0 dn0.dev" >> /etc/hosts
+```
 
 TODO:
-
-1. Create blueprints for automated cluster install post container startup
-
-2. Add the overlay 'dev' network to your machine's DNS
+1. Steps for using latest Docker 1.12 Swarm & Compose on multiple hosts
