@@ -46,6 +46,18 @@ sh submit-blueprint.sh single-container
 4. The postgres container downloads the Ambari DB DDL from GitHub during build. If you want to use a different version of Ambari, make sure to update the branch URL to match your chosen version number.
 
 ##Helpful Hints:
+The postgres container has an attached volume. If you want to toss the volume:
+```
+randy$ docker volume ls
+DRIVER              VOLUME NAME
+local               39fe77c7c5b7e319109d8b63912f3b75add8e6a911537f03cbf4c1b81239ce1b
+randy$ docker volume rm 39fe77c7c5b7e319109d8b63912f3b75add8e6a911537f03cbf4c1b81239ce1b
+Error response from daemon: Unable to remove volume, volume still in use: remove 39fe77c7c5b7e319109d8b63912f3b75add8e6a911537f03cbf4c1b81239ce1b: volume is in use - [a616026f5ce77b75f12d956cc4c1e4125ae192054c4f1c1e6472424738583725]
+randy$ docker rm -f a616026f5ce77b75f12d956cc4c1e4125ae192054c4f1c1e6472424738583725
+a616026f5ce77b75f12d956cc4c1e4125ae192054c4f1c1e6472424738583725
+randy$ docker volume rm 39fe77c7c5b7e319109d8b63912f3b75add8e6a911537f03cbf4c1b81239ce1b
+39fe77c7c5b7e319109d8b63912f3b75add8e6a911537f03cbf4c1b81239ce1b
+```
 
 Docker for Mac sometimes has storage space problems. I recommend adding the following to your ~/.bash_profile and restarting terminal:
 ```
