@@ -10,7 +10,7 @@ RUN yum install -y ambari-agent
 RUN yum install -y ambari-metrics-*
 RUN yum install -y ambari-logsearch-*
 RUN yum install -y hadoop*
-RUN yum install -y zookeeper
+RUN yum install -y zookeeper*
 RUN yum install -y hive*
 RUN yum install -y phoenix_*
 RUN yum install -y ranger*
