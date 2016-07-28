@@ -81,6 +81,8 @@ services:
      - "8983:8983"
      # Kafka
      - "6667:6667"
+     # Zeppelin
+     - "9995:9995"
      # Kerberos
      #- "88:88"
 
