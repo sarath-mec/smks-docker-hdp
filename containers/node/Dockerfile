@@ -18,7 +18,7 @@ RUN yum install -y storm_*
 RUN yum install -y kafka_*
 RUN yum install -y pig_*
 RUN yum install -y datafu_*
-RUN yum install -y spark* --exclude=spark2*
+RUN yum install -y spark* livy* --exclude=spark2*
 RUN yum install -y zeppelin*
 RUN yum install -y falcon_*
 RUN yum install -y oozie_*
