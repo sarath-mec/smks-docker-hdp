@@ -1,7 +1,7 @@
 FROM postgres
+ARG DDL_URL
 ADD scripts/* /docker-entrypoint-initdb.d/
 RUN apt-get update
 RUN apt-get install -y wget
-#RUN wget https://raw.githubusercontent.com/apache/ambari/branch-2.2/ambari-server/src/main/resources/Ambari-DDL-Postgres-CREATE.sql
-RUN wget https://raw.githubusercontent.com/apache/ambari/branch-2.4/ambari-server/src/main/resources/Ambari-DDL-Postgres-CREATE.sql
+RUN wget ${DDL_URL}
 ADD pg_hba.conf /

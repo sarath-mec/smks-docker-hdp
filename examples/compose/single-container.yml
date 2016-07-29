@@ -1,14 +1,20 @@
 version: '2'
 services:
   postgres.dev:
-    build: ../../containers/postgres
+    build:
+     context: ../../containers/postgres
+     args:
+      - DDL_URL=${DDL_URL}
     image: hdp/postgres
     networks:
      - dev
     hostname: postgres
     domainname: dev
   ambari-server.dev:
-    build: ../../containers/ambari-server
+    build: 
+      context: ../../containers/ambari-server
+      args:
+       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
     image: hdp/ambari-server
     networks:
      - dev
@@ -17,7 +23,11 @@ services:
     ports:
      - "8080:8080"
   dn0.dev:
-    build: ../../containers/node
+    build:
+      context: ../../containers/node
+      args:
+       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
+       - HDP_REPO_URL=${HDP_REPO_URL}
     image: hdp/node
     networks:
      - dev
