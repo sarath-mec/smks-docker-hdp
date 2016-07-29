@@ -40,8 +40,10 @@ sh submit-blueprint.sh single-container
 ```
 
 ##Notes:
-1. Ambari, Hive, and Ranger dbs have been pre-created in the postgres database running at postgres.dev. To configure them in Ambari, set Postgres as the DB type and leave everything else as the default options. The password for the dbs are all "dev". ![Example][screenshots/hive-setup.png?raw=true]
-2. The "node" container can be used for master, worker, or both types of services. The ambari-agent is configured to register with ambari-server.dev automatically, thus no SSH key setup is necessary. Use dn0.dev (and master0.dev if using multi-container) ![Example][screenshots/cluster-hosts.png?raw=true]
+1. Ambari, Hive, and Ranger dbs have been pre-created in the postgres database running at postgres.dev. To configure them in Ambari, set Postgres as the DB type and leave everything else as the default options. The password for the dbs are all "dev".
+![Example][screenshots/hive-setup.png?raw=true]
+2. The "node" container can be used for master, worker, or both types of services. The ambari-agent is configured to register with ambari-server.dev automatically, thus no SSH key setup is necessary. Use dn0.dev (and master0.dev if using multi-container)
+![Example][screenshots/cluster-hosts.png?raw=true]
 3. Yum packages for all HDP services have been pre-installed in the "node" container. This lets cluster install take place much faster at the expense of a spurious warning from Ambari during Host-Checks.
 4. All Ambari and HDP repositories are downloaded at buildtime. The versions and URLs are specified in .env in the project's root
 
