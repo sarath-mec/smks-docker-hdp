@@ -1,6 +1,6 @@
 # docker-hdp
 
-The below has been tested and works on the latest [Docker for Mac](https://docs.docker.com/engine/installation/mac/#/docker-for-mac).
+Install the latest version of [Docker for Mac](https://docs.docker.com/engine/installation/mac/#/docker-for-mac). Older versions of Docker provided by docker-machine and/or Docker Toolbox will not work.
 
 These containers are not pushed to DockerHub, thus you'll need to build them locally:
 ```
@@ -40,10 +40,10 @@ sh submit-blueprint.sh single-container
 ```
 
 ##Notes:
-1. Ambari, Hive, and Ranger dbs have been pre-created in the postgres database running at postgres.dev. To configure them in Ambari, set Postgres as the DB type and leave everything else as the default options. The password for the dbs are all "dev". (Example)[screenshots/hive-setup.png?raw=true]
-2. The "node" container can be used for master, worker, or both types of services. The ambari-agent is configured to register with ambari-server.dev automatically, thus no SSH key setup is necessary. (Example)[screenshots/cluster-hosts.png?raw=true]
+1. Ambari, Hive, and Ranger dbs have been pre-created in the postgres database running at postgres.dev. To configure them in Ambari, set Postgres as the DB type and leave everything else as the default options. The password for the dbs are all "dev". ![Example][screenshots/hive-setup.png?raw=true]
+2. The "node" container can be used for master, worker, or both types of services. The ambari-agent is configured to register with ambari-server.dev automatically, thus no SSH key setup is necessary. Use dn0.dev (and master0.dev if using multi-container) ![Example][screenshots/cluster-hosts.png?raw=true]
 3. Yum packages for all HDP services have been pre-installed in the "node" container. This lets cluster install take place much faster at the expense of a spurious warning from Ambari during Host-Checks.
-4. The postgres container downloads the Ambari DB DDL from GitHub during build. If you want to use a different version of Ambari, make sure to update the branch URL to match your chosen version number.
+4. All Ambari and HDP repositories are downloaded at buildtime. The versions and URLs are specified in .env in the project's root
 
 ##Helpful Hints:
 The postgres container has an attached volume. If you want to toss the volume:
