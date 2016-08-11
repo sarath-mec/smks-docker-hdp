@@ -48,17 +48,17 @@ sh submit-blueprint.sh single-container
 4. All Ambari and HDP repositories are downloaded at buildtime. The versions and URLs are specified in .env in the project's root
 
 ##Helpful Hints:
-The postgres container has an attached volume. If you want to toss the volume:
+If you HDFS having issues starting up/not leaving SafeMode, it's probably because docker-compose is re-using containers from a previous run.
+
+To start with fresh containers, before each run do:
 ```
-randy$ docker volume ls
-DRIVER              VOLUME NAME
-local               39fe77c7c5b7e319109d8b63912f3b75add8e6a911537f03cbf4c1b81239ce1b
-randy$ docker volume rm 39fe77c7c5b7e319109d8b63912f3b75add8e6a911537f03cbf4c1b81239ce1b
-Error response from daemon: Unable to remove volume, volume still in use: remove 39fe77c7c5b7e319109d8b63912f3b75add8e6a911537f03cbf4c1b81239ce1b: volume is in use - [a616026f5ce77b75f12d956cc4c1e4125ae192054c4f1c1e6472424738583725]
-randy$ docker rm -f a616026f5ce77b75f12d956cc4c1e4125ae192054c4f1c1e6472424738583725
-a616026f5ce77b75f12d956cc4c1e4125ae192054c4f1c1e6472424738583725
-randy$ docker volume rm 39fe77c7c5b7e319109d8b63912f3b75add8e6a911537f03cbf4c1b81239ce1b
-39fe77c7c5b7e319109d8b63912f3b75add8e6a911537f03cbf4c1b81239ce1b
+docker-compose -f examples/compose/multi-container.yml rm
+Going to remove compose_ambari-server.dev_1, compose_dn0.dev_1, compose_master0.dev_1, compose_postgres.dev_1
+Are you sure? [yN] y
+Removing compose_ambari-server.dev_1 ... done
+Removing compose_dn0.dev_1 ... done
+Removing compose_master0.dev_1 ... done
+Removing compose_postgres.dev_1 ... done
 ```
 
 Docker for Mac sometimes has storage space problems. I recommend adding the following to your ~/.bash_profile and restarting terminal:
