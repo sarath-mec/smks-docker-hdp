@@ -18,7 +18,7 @@ centos              6                   cf2c3ece5e41        3 weeks ago         
 postgres            latest              7ee9d2061970        6 weeks ago         275.3 MB
 ```
 
-##Running HDP 2.5 Tech Preview:
+##Running HDP 2.5:
 To run 3 containers (postgres, ambari-server, and a single container HDP cluster):
 ```
 docker-compose -f examples/compose/single-container.yml up
