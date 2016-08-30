@@ -46,6 +46,8 @@ To submit your blueprint to Ambari and have it install your cluster:
 sh submit-blueprint.sh single-container
 ```
 
+There are additional blueprints for common test-beds in examples/blueprints, including Hive-LLAP and HBase-Phoenix.
+
 ##Notes:
 1. Ambari, Hive, and Ranger dbs have been pre-created in the postgres database running at postgres.dev. To configure them in Ambari, set Postgres as the DB type and leave everything else as the default options. The password for the dbs are all "dev":
 ![hive-setup](/screenshots/hive-setup.png?raw=true)
