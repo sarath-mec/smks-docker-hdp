@@ -1,6 +1,13 @@
 # docker-hdp
 
-Install the latest version of [Docker for Mac](https://docs.docker.com/engine/installation/mac/#/docker-for-mac). Older versions of Docker provided by docker-machine and/or Docker Toolbox will not work.
+Built and tested with the latest version of [Docker for Mac](https://docs.docker.com/engine/installation/mac/#/docker-for-mac) and CentOS. Older versions of Docker provided by docker-machine and/or Docker Toolbox will not work.
+
+Trying this on Windows? Please [let me know](https://twitter.com/randerzander) how it works out.
+
+Project Goals:
+1. Provide a reusable base with which to experiment with various Hadoop versions, its ecosystem, and its configs w/o VMs
+2. Provide a pseudo-distributed Hadoop environment, because single node setups make bad assumptions about how software works in multi-node clusters.
+3. Provide an excuse to learn & play with Docker
 
 These containers are not pushed to DockerHub, thus you'll need to build them locally:
 ```
@@ -19,12 +26,12 @@ postgres            latest              7ee9d2061970        6 weeks ago         
 ```
 
 ##Running HDP 2.5:
-To run 3 containers (postgres, ambari-server, and a single container HDP cluster):
+To run 3 containers (postgres, ambari-server, and a "single container HDP cluster"):
 ```
 docker-compose -f examples/compose/single-container.yml up
 ```
 
-After a minute or so, you should be able to access Ambari's Web UI at localhost:8080. Default User/PW is admin/admin as usual.
+After a minute or so, you can access Ambari's Web UI at localhost:8080. Default User/PW is admin/admin.
 
 ##Using Ambari Blueprints:
 To snapshot your cluster's configuration into a blueprint:
