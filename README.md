@@ -40,6 +40,8 @@ To snapshot your cluster's configuration into a blueprint:
 curl --user admin:admin -H 'X-Requested-By:admin' localhost:8080/api/v1/clusters/dev?format=blueprint > examples/blueprints/single-container.json 
 ```
 
+*Note*: I give Docker 7 cores and 14GB of RAM. If you're running with less, you should generate your own Ambari Blueprints with the recommendations Ambari provides (it should auto-detect your environment's available resources).
+
 To submit your blueprint to Ambari and have it install your cluster:
 ```
 # Can swap "single-container" for multi-container, or any type saved in examples/blueprints and examples/hostgroups
@@ -55,6 +57,7 @@ There are additional blueprints for common test-beds in examples/blueprints, inc
 ![cluster-hosts](/screenshots/cluster-hosts.png?raw=true)
 3. Yum packages for all HDP services have been pre-installed in the "node" container. This lets cluster install take place much faster at the expense of a spurious warning from Ambari during Host-Checks.
 4. All Ambari and HDP repositories are downloaded at buildtime. The versions and URLs are specified in .env in the project's root
+5. Docker for Linux is more restrictive about "su" use, which Ambari relies on heavily, thus examples/compose/single-container.yml and multi-container.yml images are marked "privileged:true". Read up on the implications.
 
 ##Helpful Hints:
 If you HDFS having issues starting up/not leaving SafeMode, it's probably because docker-compose is re-using containers from a previous run.
