@@ -43,7 +43,7 @@ curl --user admin:admin -H 'X-Requested-By:admin' localhost:8080/api/v1/clusters
 To submit your blueprint to Ambari and have it install your cluster:
 ```
 # Can swap "single-container" for multi-container, or any type saved in examples/blueprints and examples/hostgroups
-sh submit-blueprint.sh single-container
+sh submit-blueprint.sh single-container examples/blueprints/single-container.json
 ```
 
 There are additional blueprints for common test-beds in examples/blueprints, including Hive-LLAP and HBase-Phoenix.
