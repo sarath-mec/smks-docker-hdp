@@ -51,7 +51,7 @@ sh submit-blueprint.sh single-container examples/blueprints/single-container.jso
 There are additional blueprints for common test-beds in examples/blueprints, including Hive-LLAP and HBase-Phoenix.
 
 ##Notes:
-1. Ambari, Hive, and Ranger dbs have been pre-created in the postgres database running at postgres.dev. To configure them in Ambari, set Postgres as the DB type and leave everything else as the default options. The password for the dbs are all "dev":
+1. Ambari, Hive, and Ranger dbs have been pre-created in the postgres database running at postgres.dev. To configure them in Ambari, set Postgres as the DB type and change the Database URL to point at postgres.dev (as depicted in screenshot below) and leave everything else as the default options. The password for the dbs are all "dev":
 ![hive-setup](/screenshots/hive-setup.png?raw=true)
 2. The "node" container can be used for master, worker, or both types of services. The ambari-agent is configured to register with ambari-server.dev automatically, thus no SSH key setup is necessary. Use dn0.dev (and master0.dev if using multi-container):
 ![cluster-hosts](/screenshots/cluster-hosts.png?raw=true)
