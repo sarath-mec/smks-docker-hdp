@@ -14,12 +14,12 @@ services:
     domainname: dev
     ports:
      - "8080:8080"
-  master0.dev:
+  dn0.dev:
     image: sarath4mec/node
     privileged: true
     networks:
      - dev
-    hostname: master0
+    hostname: dn0
     domainname: dev
     ports:
      # ZooKeeper
@@ -62,18 +62,6 @@ services:
      - "6183:6183"
      # Grafana
      - "3000:3000"
-     # Zeppelin
-     - "9995:9995"
-     # Kerberos
-     #- "88:88"
-  dn0.dev:
-    image: sarath4mec/node
-    privileged: true
-    networks:
-     - dev
-    hostname: dn0
-    domainname: dev
-    ports:
      # HDFS
      - "50070:50070"
      - "50470:50470"
@@ -92,21 +80,10 @@ services:
      - "8983:8983"
      # Kafka
      - "6667:6667"
-  dn1.dev:
-    image: sarath4mec/node
-    privileged: true
-    networks:
-     - dev
-    hostname: dn1
-    domainname: dev
-
-  dn2.dev:
-    image: sarath4mec/node
-    privileged: true
-    networks:
-     - dev
-    hostname: dn2
-    domainname: dev
+     # Zeppelin
+     - "9995:9995"
+     # Kerberos
+     #- "88:88"
 
 networks:
   dev:
