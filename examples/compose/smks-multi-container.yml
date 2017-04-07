@@ -19,7 +19,7 @@ services:
     privileged: true
     networks:
      - dev
-    hostname: master0
+    hostname: dn0
     domainname: dev
     ports:
      # ZooKeeper
@@ -71,7 +71,7 @@ services:
     privileged: true
     networks:
      - dev
-    hostname: dn0
+    hostname: dn1
     domainname: dev
     ports:
      # HDFS
@@ -97,7 +97,7 @@ services:
     privileged: true
     networks:
      - dev
-    hostname: dn1
+    hostname: dn2
     domainname: dev
 
   dn3.dev:
