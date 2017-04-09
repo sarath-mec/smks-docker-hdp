@@ -1,5 +1,4 @@
 #!/bin/bash
-sleep 2m
 sed -i "s/hostname=localhost/hostname=ambari-server.dev/" /etc/ambari-agent/conf/ambari-agent.ini
 ambari-agent start
 

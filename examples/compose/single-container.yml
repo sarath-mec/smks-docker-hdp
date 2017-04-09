@@ -5,7 +5,7 @@ services:
      context: ../../containers/postgres
      args:
       - AMBARI_DDL_URL=${AMBARI_DDL_URL}
-    image: hdp/postgres
+    image: sarath4mec/postgres
     networks:
      - dev
     environment:
@@ -17,7 +17,7 @@ services:
       context: ../../containers/ambari-server
       args:
        - AMBARI_REPO_URL=${AMBARI_REPO_URL}
-    image: hdp/ambari-server
+    image: sarath4mec/ambari-server
     networks:
      - dev
     hostname: ambari-server
@@ -30,7 +30,7 @@ services:
       args:
        - AMBARI_REPO_URL=${AMBARI_REPO_URL}
        - HDP_REPO_URL=${HDP_REPO_URL}
-    image: hdp/node
+    image: sarath4mec/node
     privileged: true
     networks:
      - dev

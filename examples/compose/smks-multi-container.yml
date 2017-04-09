@@ -1,9 +1,11 @@
-version: '2'
+version: '3'
 services:
   postgres.dev:
     image: sarath4mec/postgres
     networks:
      - dev
+    volumes:
+     - /mnt/postgresql/data:/var/lib/postgresql/data
     hostname: postgres
     domainname: dev
   ambari-server.dev:
@@ -92,21 +94,6 @@ services:
      - "8983:8983"
      # Kafka
      - "6667:6667"
-  dn2.dev:
-    image: sarath4mec/node
-    privileged: true
-    networks:
-     - dev
-    hostname: dn2
-    domainname: dev
-
-  dn3.dev:
-    image: sarath4mec/node
-    privileged: true
-    networks:
-     - dev
-    hostname: dn3
-    domainname: dev
 
 networks:
   dev:
