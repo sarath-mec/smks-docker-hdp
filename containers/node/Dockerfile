@@ -23,6 +23,9 @@ RUN yum install -y zeppelin*
 RUN yum install -y falcon_*
 RUN yum install -y oozie_*
 #RUN yum install -y lucidworks-hdpsearch
+RUN yum install -y smartsense*
+RUN yum install -y druid*
+RUN yum install -y superset*
 RUN yum install -y lzo snappy-devel rpcbind
 RUN rm /etc/yum.repos.d/hdp*.repo
 ADD scripts/start.sh /start.sh

@@ -1,6 +1,7 @@
 #!/bin/bash
 
-sleep 22
+
+sleep 20
 ambari-server start
 
 while true; do
