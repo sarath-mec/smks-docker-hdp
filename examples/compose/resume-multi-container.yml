@@ -22,7 +22,7 @@ services:
     networks:
      - dev
     volumes:
-     - /home/sarath_mec/hdfs:/admin
+     - /home/sarath_mec/hdfs:/admin/data
     hostname: dn0
     domainname: dev
     ports:
@@ -76,7 +76,7 @@ services:
     networks:
      - dev
     volumes:
-     - /home/sarath_mec/hdfs:/admin
+     - /home/sarath_mec/hdfs:/admin/data
     hostname: dn1
     domainname: dev
     ports:
