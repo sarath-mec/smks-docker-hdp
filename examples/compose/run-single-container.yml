@@ -1,5 +1,4 @@
-version: '2'
-services:
+version: '333services:
   postgres.dev:
     image: sarath4mec/postgres
     networks:
