@@ -4,6 +4,8 @@ services:
     image: sarath4mec/postgres
     networks:
      - dev
+    volumes:
+     - /home/sarath_mec/postgresql/data:/var/lib/postgresql/data
     hostname: postgres
     domainname: dev
   ambari-server.dev:

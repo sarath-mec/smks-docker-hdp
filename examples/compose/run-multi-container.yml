@@ -5,7 +5,7 @@ services:
     networks:
      - dev
     volumes:
-     - /mnt/postgresql/data:/var/lib/postgresql/data
+     - /home/sarath_mec/postgresql/data:/var/lib/postgresql/data
     hostname: postgres
     domainname: dev
   ambari-server.dev:
