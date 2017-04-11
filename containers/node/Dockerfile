@@ -30,3 +30,6 @@ RUN yum install -y lzo snappy-devel rpcbind
 RUN rm /etc/yum.repos.d/hdp*.repo
 ADD scripts/start.sh /start.sh
 CMD /start.sh
+RUN mkdir admin
+RUN chmod 777 admin
+VOLUME /admin

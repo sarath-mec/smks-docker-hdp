@@ -21,6 +21,8 @@ services:
     privileged: true
     networks:
      - dev
+    volumes:
+     - /home/sarath_mec/hdfs:/admin
     hostname: dn0
     domainname: dev
     ports:
