@@ -17,7 +17,7 @@ services:
     ports:
      - "8080:8080"
   dn0.dev:
-    image: sarath4mec/node
+    image: sarath4mec/dn0
     privileged: true
     networks:
      - dev
@@ -69,7 +69,7 @@ services:
      # Kerberos
      #- "88:88"
   dn1.dev:
-    image: sarath4mec/node
+    image: sarath4mec/dn1
     privileged: true
     networks:
      - dev

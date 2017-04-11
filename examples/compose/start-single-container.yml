@@ -1,20 +1,14 @@
 version: '3'
 services:
   postgres.dev:
-    build:
-     context: ../../containers/postgres
-     args:
-      - AMBARI_DDL_URL=${AMBARI_DDL_URL}
     image: sarath4mec/postgres
     networks:
      - dev
+    volumes:
+     - /home/sarath_mec/postgresql/data:/var/lib/postgresql/data
     hostname: postgres
     domainname: dev
   ambari-server.dev:
-    build: 
-      context: ../../containers/ambari-server
-      args:
-       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
     image: sarath4mec/ambari-server
     networks:
      - dev
@@ -22,17 +16,12 @@ services:
     domainname: dev
     ports:
      - "8080:8080"
-  master0.dev:
-    build:
-      context: ../../containers/node
-      args:
-       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
-       - HDP_REPO_URL=${HDP_REPO_URL}
+  dn0.dev:
     image: sarath4mec/node
     privileged: true
     networks:
      - dev
-    hostname: master0
+    hostname: dn0
     domainname: dev
     ports:
      # ZooKeeper
@@ -75,23 +64,6 @@ services:
      - "6183:6183"
      # Grafana
      - "3000:3000"
-     # Zeppelin
-     - "9995:9995"
-     # Kerberos
-     #- "88:88"
-  dn0.dev:
-    build:
-      context: ../../containers/node
-      args:
-       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
-       - HDP_REPO_URL=${HDP_REPO_URL}
-    image: sarath4mec/node
-    privileged: true
-    networks:
-     - dev
-    hostname: dn0
-    domainname: dev
-    ports:
      # HDFS
      - "50070:50070"
      - "50470:50470"
@@ -110,6 +82,10 @@ services:
      - "8983:8983"
      # Kafka
      - "6667:6667"
+     # Zeppelin
+     - "9995:9995"
+     # Kerberos
+     #- "88:88"
 
 networks:
   dev:
