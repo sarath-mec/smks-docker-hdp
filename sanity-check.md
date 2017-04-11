@@ -3,6 +3,7 @@ Login to your datanode, create a Hadoop home directory for "admin", and put some
 localhost:randy$ docker exec -it compose_master0.dev_1 bash
 [root@dn0 /]# su hdfs
 bash-4.2$ mkdir admin
+bash-4.2$ cd admin
 bash-4.2$ hadoop -fs -mkdir /user/admin
 bash-4.2$ hadoop -fs -chown admin /user/admin
 ```
