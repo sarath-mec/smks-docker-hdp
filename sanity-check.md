@@ -17,6 +17,8 @@ localhost:randy$ docker exec -it compose_dn1.dev_1 bash
 bash-4.2$ hive
 hive> create table loglines (line string);
 hive> load data local inpath '/var/log/ambari-agent/' overwrite into table loglines;
+hive> create table loglines_ext (line string);
+hive> load data local inpath '/admin/' overwrite into table loglines_ext;
 hive> create table words as
 select word, count(*) as count
 from (
@@ -25,4 +27,5 @@ from (
   from loglines
 ) a
 group by word;
+
 ```
