@@ -16,7 +16,7 @@ localhost:randy$ docker exec -it compose_dn1.dev_1 bash
 [root@dn1 /]# su hdfs
 bash-4.2$ hive
 hive> create table loglines (line string);
-hive> load data local inpath '/var/log/ambari-agent/' overwrite into loglines;
+hive> load data local inpath '/var/log/ambari-agent/' overwrite into table loglines;
 hive> create table words as
 select word, count(*) as count
 from (
