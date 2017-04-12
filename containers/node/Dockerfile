@@ -32,6 +32,6 @@ ADD scripts/start.sh /start.sh
 CMD /start.sh
 RUN mkdir /admin
 RUN chmod 777 /admin
-RUN mkdir /admin/data
-RUN chmod 777 /admin/data
-VOLUME /admin/data/
+RUN mkdir /admin/sarath
+RUN chmod 777 /admin/sarath
+VOLUME /admin/sarath/

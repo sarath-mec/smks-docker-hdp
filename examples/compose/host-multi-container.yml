@@ -8,7 +8,7 @@ services:
          - postgres.dev
     deploy:
       placement:
-        constraints: [node.role == manager]
+        constraints: [node.hostname == manager]
     volumes:
      - "/home/sarath_mec/postgresql/data:/var/lib/postgresql/data"
     hostname: postgres.dev
@@ -20,7 +20,7 @@ services:
          - ambari-server.dev
     deploy:
       placement:
-        constraints: [node.role == manager]
+        constraints: [node.hostname == smks]
     hostname: ambari-server.dev
     ports:
      - "8080:8080"
@@ -33,9 +33,9 @@ services:
          - dn0.dev
     deploy:
       placement:
-        constraints: [node.role == manager]
+        constraints: [node.hostname == manager]
     volumes:
-     - "/home/sarath_mec/hdfs/dn0:/admin/data"
+     - "/home/sarath_mec/hdfs/dn0:/admin/sarath"
     hostname: dn0.dev
     ports:
      # ZooKeeper
@@ -93,7 +93,7 @@ services:
       placement:
         constraints: [node.hostname == smks]
     volumes:
-     - "/home/sarath_mec/hdfs/dn1:/admin/data"
+     - "/home/sarath_mec/hdfs/dn1:/admin/sarath"
     hostname: dn1.dev
     ports:
      # HDFS
