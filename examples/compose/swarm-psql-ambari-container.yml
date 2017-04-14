@@ -1,0 +1,32 @@
+version: '3'
+services:
+  postgres:
+    image: sarath4mec/postgres
+    networks:
+      hdfs: 
+        aliases:
+         - postgres.dev
+    deploy:
+      placement:
+        constraints: [node.hostname == manager]
+    volumes:
+     - "/home/sarath_mec/postgresql/data:/var/lib/postgresql/data"
+    hostname: postgres.dev
+  ambari-server:
+    image: sarath4mec/ambari-server
+    networks:
+      hdfs:
+        aliases:
+         - ambari-server.dev
+    deploy:
+      placement:
+        constraints: [node.hostname == smks]
+    hostname: ambari-server.dev
+    ports:
+     - "8080:8080"
+
+networks:
+  hdfs:
+    external:
+      name: hdfs
+
