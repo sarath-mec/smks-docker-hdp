@@ -1,8 +1,10 @@
 Login to your datanode, create a Hadoop home directory for "admin", and put some sample logfiles into it
 
+```
 root:sarath# cp /var/log/cloud-init.log /home/sarath_mec/hdfs/dn0/
 root:sarath# cp /var/log/cloud-init.log /home/sarath_mec/hdfs/dn1/
-
+```
+Login to docker nodes and create some HDFS data
 
 ```
 localhost:sarath$ docker exec -it compose_dn0.dev_1 bash
