@@ -20,7 +20,7 @@ services:
          - ambari-server.dev
     deploy:
       placement:
-        constraints: [node.hostname == smks]
+        constraints: [node.hostname == worker]
     hostname: ambari-server.dev
     ports:
      - "8080:8080"
