@@ -1,0 +1,36 @@
+version: '3'
+services:
+  dn1:
+    image: sarath4mec/dn1
+    privileged: true
+    networks:
+      hdfs:
+        aliases:
+         - dn1.dev
+    volumes:
+     - "/home/sarath_mec/hdfs/dn1:/usr/sarath"
+    hostname: dn1.dev
+    ports:
+     # HDFS
+     - "50070:50070"
+     - "50470:50470"
+     - "50075:50075"
+     - "50475:50475"
+     - "50010:50010"
+     - "50020:50020"
+     - "50030:50030"
+     # HBase
+     - "16020:16020"
+     - "16030:16030"
+     # Yarn
+     - "45455:45454"
+     - "8042:8042"
+     # Solr
+     - "8983:8983"
+     # Kafka
+     - "6667:6667"
+
+networks:
+  hdfs:
+    external:
+      name: hdfs
