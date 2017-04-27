@@ -10,7 +10,7 @@ services:
       placement:
         constraints: [node.hostname == manager]
     volumes:
-     - "/home/sarath_mec/postgresql/data:/var/lib/postgresql/data"
+     - "/home/sarath_mec/docker_volumes/postgresql/data:/var/lib/postgresql/data"
     hostname: postgres.dev
   ambari-server:
     image: sarath4mec/ambari-server
