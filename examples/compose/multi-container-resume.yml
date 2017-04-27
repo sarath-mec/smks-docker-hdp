@@ -5,7 +5,7 @@ services:
     networks:
      - dev
     volumes:
-     - /home/sarath_mec/postgresql/data:/var/lib/postgresql/data
+     - /home/sarath_mec/docker_volumes/postgresql/data:/var/lib/postgresql/data
     hostname: postgres
     domainname: dev
   ambari-server.dev:
@@ -22,7 +22,7 @@ services:
     networks:
      - dev
     volumes:
-     - /home/sarath_mec/hdfs/dn0:/admin/sarath
+     - /home/sarath_mec/docker_volumes/hdfs/dn0:/admin/sarath
     hostname: dn0
     domainname: dev
     ports:
@@ -76,7 +76,7 @@ services:
     networks:
      - dev
     volumes:
-     - /home/sarath_mec/hdfs/dn1:/admin/sarath
+     - /home/sarath_mec/docker_volumes/hdfs/dn1:/admin/sarath
     hostname: dn1
     domainname: dev
     ports:
