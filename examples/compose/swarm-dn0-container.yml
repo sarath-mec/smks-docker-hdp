@@ -8,7 +8,7 @@ services:
         aliases:
          - dn0.dev
     volumes:
-     - "/home/sarath_mec/hdfs/dn0:/usr/sarath"
+     - "/home/sarath_mec/docker_volumes/hdfs/dn0:/usr/sarath"
     hostname: dn0.dev
     ports:
      # ZooKeeper
