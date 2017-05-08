@@ -9,5 +9,6 @@ services:
     image: sarath4mec/mysql
     environment:
      - AMBARI_DDL_URL_MYSQL=${AMBARI_DDL_URL_MYSQL}
+     - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     hostname: mysql
     domainname: dev
