@@ -6,7 +6,5 @@ set -e
 #sed -i "s/\${ambariSchemaVersion}/2.5.0/g" Ambari-DDL-MySQL-CREATE.sql
 
 #mysql --user=ambari --password=dev < Ambari-DDL-MySQL-CREATE.sql
-echo "WHOAMI"
-echo whoami
-echo "Password"
+whoami
 echo $MYSQL_ROOT_PASSWORD
