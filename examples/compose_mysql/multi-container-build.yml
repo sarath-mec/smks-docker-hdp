@@ -6,6 +6,7 @@ services:
      context: ../../containers/mysql
      args:
       - AMBARI_DDL_URL_MYSQL=${AMBARI_DDL_URL_MYSQL}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     image: sarath4mec/mysql
     environment:
      - AMBARI_DDL_URL_MYSQL=${AMBARI_DDL_URL_MYSQL}
