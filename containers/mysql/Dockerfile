@@ -4,8 +4,8 @@ RUN apt-get install -y wget
 ARG AMBARI_DDL_URL_MYSQL
 ENV AMBARI_DDL_URL_MYSQL=${AMBARI_DDL_URL_MYSQL}
 ADD scripts/100-add_user.sql /docker-entrypoint-initdb.d/
-COPY scripts/100-ambari.sh /mysql/100-ambari.sh
-RUN /mysql/setup.sh
+COPY scripts/101-ambari.sh /mysql/101-ambari.sh
+RUN /mysql/101-ambari.sh
 #ADD pg_hba.conf /pg_hba.conf
 #RUN mkdir /home/postgres
 #RUN chown postgres /pg_hba.conf /home/postgres
