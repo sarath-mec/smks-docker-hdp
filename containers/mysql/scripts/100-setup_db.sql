@@ -36,5 +36,5 @@ create user 'rangerkms'@'localhost' identified by 'dev';
 grant all privileges on rangerkms*.* to 'rangerkms'@'localhost';
 flush privileges;
 
-use ambari;
-source /mysql/Ambari-DDL-MySQL-CREATE.sql;
+#use ambari;
+#source /mysql/Ambari-DDL-MySQL-CREATE.sql;
