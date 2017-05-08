@@ -11,21 +11,3 @@ services:
      - AMBARI_DDL_URL=${AMBARI_DDL_URL}
     hostname: postgres
     domainname: dev
-  ambari-server.dev:
-    build: 
-      context: ../../containers/ambari-server
-      args:
-       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
-    image: sarath4mec/ambari-server
-    hostname: ambari-server
-    domainname: dev
-  sn0.dev:
-    build:
-      context: ../../containers/node
-      args:
-       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
-       - HDP_REPO_URL=${HDP_REPO_URL}
-    image: sarath4mec/node
-    privileged: true
-    hostname: dn0
-    domainname: dev
