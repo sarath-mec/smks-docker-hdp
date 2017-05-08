@@ -13,3 +13,21 @@ services:
      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     hostname: mysql
     domainname: dev
+  ambari-server-mysql.dev:
+    build: 
+      context: ../../containers/ambari-server-mysql
+      args:
+       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
+    image: sarath4mec/ambari-server-mysql
+    hostname: ambari-server-mysql
+    domainname: dev
+  sn0.dev:
+    build:
+      context: ../../containers/node
+      args:
+       - AMBARI_REPO_URL=${AMBARI_REPO_URL}
+       - HDP_REPO_URL=${HDP_REPO_URL}
+    image: sarath4mec/node
+    privileged: true
+    hostname: dn0
+    domainname: dev
