@@ -13,7 +13,7 @@ services:
      - "/home/sarath_mec/postgresql/data:/var/lib/postgresql/data"
     hostname: postgres.dev
   ambari-server:
-    image: sarath4mec/ambari-server
+    image: sarath4mec/ambari-server-psql
     networks:
       hdfs:
         aliases:
