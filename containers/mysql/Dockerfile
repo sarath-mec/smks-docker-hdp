@@ -2,8 +2,7 @@ FROM postgres@sha256:3b51a72ca2642f24fa782c2fb99ddb0d29cbcd38f32639c98a80966a25a
 RUN apt-get update -y
 RUN apt-get install -y wget
 ARG AMBARI_DDL_URL_MYSQL
-RUN wget -P /docker-entrypoint-initdb.d/ $AMBARI_DDL_URL_MYSQL
-RUN sed -i "s/\${ambariSchemaVersion}/2.5.0/g" /docker-entrypoint-initdb.d/Ambari-DDL-Postgres-CREATE.sql
+ENV AMBARI_DDL_URL_MYSQL=${AMBARI_DDL_URL_MYSQL}
 ADD scripts/* /docker-entrypoint-initdb.d/
 #ADD pg_hba.conf /pg_hba.conf
 #RUN mkdir /home/postgres
