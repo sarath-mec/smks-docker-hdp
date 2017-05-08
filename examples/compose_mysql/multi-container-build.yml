@@ -5,9 +5,9 @@ services:
     build:
      context: ../../containers/postgres
      args:
-      - AMBARI_DDL_URL=${AMBARI_DDL_URL}
+      - AMBARI_DDL_URL_MYSQL=${AMBARI_DDL_URL_MYSQL}
     image: sarath4mec/postgres
     environment:
-     - AMBARI_DDL_URL=${AMBARI_DDL_URL}
+     - AMBARI_DDL_URL_MYSQL=${AMBARI_DDL_URL_MYSQL}
     hostname: postgres
     domainname: dev
