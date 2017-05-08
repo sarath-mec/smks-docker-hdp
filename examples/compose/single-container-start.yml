@@ -9,7 +9,7 @@ services:
     hostname: postgres
     domainname: dev
   ambari-server.dev:
-    image: sarath4mec/ambari-server
+    image: sarath4mec/ambari-server-psql
     networks:
      - dev
     hostname: ambari-server
