@@ -3,7 +3,7 @@ RUN apt-get update -y
 RUN apt-get install -y wget
 ARG AMBARI_DDL_URL_MYSQL
 ENV AMBARI_DDL_URL_MYSQL=${AMBARI_DDL_URL_MYSQL}
-ENV MYSQL_ROOT_PASSWORD=${AMBARI_DDL_URL_MYSQL}
+ENV MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
 RUN wget -P /mysql/ $AMBARI_DDL_URL_MYSQL
 ADD scripts/100-setup_db.sql /docker-entrypoint-initdb.d/
 ADD scripts/101-debug.sh /mysql/101-debug.sh
