@@ -33,3 +33,7 @@ grant all privileges on *.* to 'rangerkms'@'%';
 create user 'rangerkms'@'localhost' identified by 'dev';
 grant all privileges on *.* to 'rangerkms'@'localhost';
 flush privileges;
+
+create database hdp_db;
+use hdp_db;
+source /mysql/Ambari-DDL-MySQL-CREATE.sql;
