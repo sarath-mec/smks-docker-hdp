@@ -7,6 +7,7 @@ ENV MYSQL_ROOT_PASSWORD=${AMBARI_DDL_URL_MYSQL}
 ADD scripts/100-add_user.sql /docker-entrypoint-initdb.d/
 ADD scripts/101-ambari.sh /mysql/101-ambari.sh
 RUN chmod +x /mysql/101-ambari.sh
+RUN wget -P /mysql/ $AMBARI_DDL_URL_MYSQL
 RUN /mysql/101-ambari.sh
 #ADD pg_hba.conf /pg_hba.conf
 #RUN mkdir /home/postgres
