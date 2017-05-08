@@ -8,11 +8,11 @@ services:
 #     - /home/sarath_mec/docker_volumes/postgresql/data:/var/lib/postgresql/data
     hostname: mysql
     domainname: dev
-  ambari-server-mysql.dev:
+  ambari-server.dev:
     image: sarath4mec/ambari-server-mysql
     networks:
      - dev
-    hostname: ambari-server-mysql
+    hostname: ambari-server
     domainname: dev
     ports:
      - "8080:8080"
