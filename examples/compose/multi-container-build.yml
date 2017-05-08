@@ -12,10 +12,10 @@ services:
     domainname: dev
   ambari-server.dev:
     build: 
-      context: ../../containers/ambari-server
+      context: ../../containers/ambari-server-psql
       args:
        - AMBARI_REPO_URL=${AMBARI_REPO_URL}
-    image: sarath4mec/ambari-server
+    image: sarath4mec/ambari-server-psql
     hostname: ambari-server
     domainname: dev
   sn0.dev:
