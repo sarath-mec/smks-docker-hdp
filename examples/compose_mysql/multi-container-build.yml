@@ -1,7 +1,7 @@
 
 version: '3'
 services:
-  postgres.dev:
+  mysql.dev:
     build:
      context: ../../containers/mysql
      args:
