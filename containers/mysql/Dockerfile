@@ -6,6 +6,7 @@ ARG MYSQL_ROOT_PASSWORD
 ENV AMBARI_DDL_URL_MYSQL=${AMBARI_DDL_URL_MYSQL}
 ENV MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
 RUN wget -P /mysql/ $AMBARI_DDL_URL_MYSQL
+RUN sed -i "s/\${ambariSchemaVersion}/2.5.0/g" /mysql/Ambari-DDL-MySQL-CREATE.sql
 ADD scripts/100-setup_db.sql /docker-entrypoint-initdb.d/
 ADD scripts/101-debug.sh /mysql/101-debug.sh
 #RUN chmod +x /mysql/101-debug.sh
