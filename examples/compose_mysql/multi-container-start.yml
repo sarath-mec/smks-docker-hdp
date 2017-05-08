@@ -4,8 +4,8 @@ services:
     image: sarath4mec/mysql
     networks:
      - dev
-#    volumes:
-#     - /home/sarath_mec/docker_volumes/postgresql/data:/var/lib/postgresql/data
+    volumes:
+     - /home/sarath_mec/docker_volumes/mysql:/var/lib/mysql
     hostname: mysql
     domainname: dev
   ambari-server.dev:
