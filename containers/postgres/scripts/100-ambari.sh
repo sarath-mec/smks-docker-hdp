@@ -2,8 +2,8 @@
 set -e
 
 cd ~/
-wget $AMBARI_DDL_URL_MYSQL
-sed -i "s/\${ambariSchemaVersion}/2.5.0/g" Ambari-DDL-MySQL-CREATE.sql
+wget $AMBARI_DDL_URL_POSTGRES
+sed -i "s/\${ambariSchemaVersion}/2.5.0/g" Ambari-DDL-Postgres-CREATE.sql
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
     create database ambari;
