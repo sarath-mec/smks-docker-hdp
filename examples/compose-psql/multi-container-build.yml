@@ -26,6 +26,6 @@ services:
        - HDP_REPO_URL=${HDP_REPO_URL}
     image: sarath4mec/node
     privileged: true
-    hostname: dn0
+    hostname: sn0
     domainname: dev
 

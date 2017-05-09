@@ -1,3 +1,3 @@
-create user hive identified by 'dev';
+create user hive with password 'dev';
 create database hive;
-grant all privileges on hive.* to hive;
+alter database hive owner to hive;

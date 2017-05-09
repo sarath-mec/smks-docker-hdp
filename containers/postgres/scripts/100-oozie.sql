@@ -1,3 +1,3 @@
-create user oozie identified by 'dev';
+create user oozie with password 'dev';
 create database oozie;
-grant all privileges on oozie.* to oozie;
+alter database oozie owner to oozie;
