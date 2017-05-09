@@ -4,10 +4,10 @@ services:
     build:
      context: ../../containers/postgres
      args:
-      - AMBARI_DDL_URL=${AMBARI_DDL_URL}
+      - AMBARI_DDL_URL_POSTGRES=${AMBARI_DDL_URL_POSTGRES}
     image: sarath4mec/postgres
     environment:
-     - AMBARI_DDL_URL=${AMBARI_DDL_URL}
+     - AMBARI_DDL_URL_POSTGRES=${AMBARI_DDL_URL_POSTGRES}
     hostname: postgres
     domainname: dev
   ambari-server.dev:
