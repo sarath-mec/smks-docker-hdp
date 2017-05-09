@@ -10,7 +10,7 @@ services:
       placement:
         constraints: [node.hostname == manager]
     volumes:
-     - "/home/sarath_mec/postgresql/data:/var/lib/postgresql/data"
+     - "/home/sarath_mec/docker_volumes/postgresql/data:/var/lib/postgresql/data"
     hostname: postgres.dev
   ambari-server:
     image: sarath4mec/ambari-server-psql
@@ -35,7 +35,7 @@ services:
       placement:
         constraints: [node.hostname == manager]
     volumes:
-     - "/home/sarath_mec/hdfs/dn0:/admin/sarath"
+     - "/home/sarath_mec/docker_volumes/hdfs/dn0:/admin/sarath"
     hostname: dn0.dev
     ports:
      # ZooKeeper
@@ -93,7 +93,7 @@ services:
       placement:
         constraints: [node.hostname == smks]
     volumes:
-     - "/home/sarath_mec/hdfs/dn1:/admin/sarath"
+     - "/home/sarath_mec/docker_volumes/hdfs/dn1:/admin/sarath"
     hostname: dn1.dev
     ports:
      # HDFS
