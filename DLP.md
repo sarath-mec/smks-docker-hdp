@@ -126,9 +126,8 @@ These are generally used in use cases like
 - ***Cryptographic hashed*** values cannot be reversed, even though it maintains referential integrity. Also surrogate annotation is also not supported in the API
 - **Context tweak:** A reference to a data field that "tweaks" the input value so that identical input values can be de-identified to different output values. The context tweak is optional when transforming a column of structured, or tabular data, with a `RecordTransformation`. 
 - We have to use **DLP APIs programmatically** to reidentify the original data once encrypted using original key and secret
-- Cloud DLP supports three techniques as below. 
 
-These methods are summarized in the following table.
+Cloud DLP supports three techniques as below. These methods are summarized in the following table.
 
 | ** Deterministic encryption using AES-SIV** | **Format preserving encryption**                    | **Cryptographic hashing**                                    |                                                     |
 | :------------------------------------------ | :-------------------------------------------------- | :----------------------------------------------------------- | --------------------------------------------------- |
