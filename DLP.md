@@ -107,20 +107,20 @@ Here we can directly run DLP jobs which was earlier achieved through backend API
 
 The **<u>*[De-identify Transformation Techniques](https://cloud.google.com/dlp/docs/transformations-reference)*</u>** available are
 - [Redaction](https://cloud.google.com/dlp/docs/transformations-reference#redaction): Deletes all or part of a detected sensitive value.
-  ```
+```
 Input : My name is Alicia Abernathy, and my email address is aabernathy@example.com.
 Output: My name is Alicia Abernathy, and my email address is .
-  ```
+```
 - [Replacement](https://cloud.google.com/dlp/docs/transformations-reference#replacement): Replaces a detected sensitive value with a specified surrogate value.
-  ```
+```
 Input : My name is Alicia Abernathy, and my email address is aabernathy@example.com.
 Output: My name is Alicia Abernathy, and my email address is [fake@example.com].
-  ```
+```
 - [Masking](https://cloud.google.com/dlp/docs/transformations-reference#masking): Replaces a number of characters of a sensitive value with a specified surrogate character, such as a hash (#) or asterisk (*).
-  ```
+```
 Input : My name is Alicia Abernathy, and my email address is aabernathy@example.com.
 Output: My name is Alicia Abernathy, and my email address is ##########@#######.###.
-  ```
+```
 - [Crypto-based tokenization/Pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization): Encrypts the original sensitive data value using a cryptographic key. Cloud DLP supports several types of tokenization, including transformations that can be reversed, or "re-identified.". **This is a separate topic which will be discussed below**
 - [Bucketing](https://cloud.google.com/dlp/docs/concepts-bucketing): "Generalizes" a sensitive value by replacing it with a range of values. (For example, replacing a specific age with an age range, or temperatures with ranges corresponding to "Hot," "Medium," and "Cold.")
 - [Date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting): Shifts sensitive date values by a random amount of time. Shifting dates is usually done in context to an individual or an entity.
