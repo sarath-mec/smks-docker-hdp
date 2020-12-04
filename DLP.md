@@ -3,7 +3,6 @@
 ## Infotypes, Likelihood and Fine-Tuning
 #### Built-In Infotype Detectors
 ​	There are over 120 ***[built-in Infotype detectors](https://cloud.google.com/dlp/docs/concepts-infotypes#built-in).***  They include detectors for country- or region-specific sensitive data types as well as globally applicable data types.  Cloud DLP Infotype detection leverages various techniques **including pattern matching, checksums, machine-learning, context analysis, and others.** Some example Infotypes are listed below. For the complete list click ***[here](https://cloud.google.com/dlp/docs/infotypes-reference)***
-
 ###### Country- or region-specific sensitive data types 
 - *French* *Numéro d'Inscription au Répertoire (NIR)* (`FRANCE_NIR`)
 - UK driver's license number (`UK_DRIVERS_LICENSE_NUMBER`)
@@ -22,12 +21,10 @@ These are detectors that you create yourself. There are three kinds of ***[custo
 #### Likelihood
 ​	Results are categorized into buckets based on how likely they are to represent a match with a certainty score called likelihood. For example, a Infotype may return a lower likelihood if it only matches the pattern and return a higher likelihood if it matches the pattern and has positive context around it. For this reason, ***<u>you may notice that a single finding could match several types at lower likelihood.</u>***  
 The likelihood buckets are `LIKELIHOOD_UNSPECIFIED`*[Default value; =~ POSSIBLE]*,`VERY_UNLIKELY`, `UNLIKELY` , `POSSIBLE`, `LIKELY`, `VERY_LIKELY`
-
 > Note: ***Positive context*** is when the inclusion of certain characters, words, or phrases in proximity to a potentially matched pattern indicates to Cloud DLP that a match to the pattern is more likely. Similarly, ***negative context*** is when the inclusion of certain characters, words, or phrases in proximity to a pattern indicates that a match is less likely.
 #### Google DLP Live Demo
 ​	For a live demo of Google Cloud DLP in action, click below **[link](https://cloud.google.com/dlp/demo/#!/)**. It shows a running demo of **Free From Text Inspection** with **likelihood** for the **built-in Infotypes**, as discussed above. You can select the **INFOTYPES** available and **Likelihood filter** under **Options**
 <img src="https://raw.githubusercontent.com/sarath-mec/smks-docker-hdp/master/screenshots/image-20201204100055627.png" alt="image-20201204100055627" style="zoom: 50%;" />
-
 #### Fine-Tuning
 ​	In addition, Cloud DLP includes inspection rules, which enable you to fine-tune scan results by adding the following to existing built-in or custom infoType detector
 - [Exclusion rules](https://cloud.google.com/dlp/docs/concepts-infotypes#exclusion) : Rules that enable you to decrease the number of findings returned.
@@ -39,9 +36,7 @@ Even though these below terms are confusing, it is interchangeably used, which w
 - [InfoTypeTransformations](https://cloud.google.com/dlp/docs/deidentify-sensitive-data#infotype_transformations): Applied to values within **submitted free-form text** that are identified as a specific infoType.
 - [RecordTransformations](https://cloud.google.com/dlp/docs/deidentify-sensitive-data#record_transformations): Applied to values within **submitted tabular text data** that are identified as a specific infoType, or on an entire column of tabular data.
 #### Redaction
-
 ​	Redaction is generally used as a term to remove sensitive data.
-
   - [Redacting sensitive data from text](https://cloud.google.com/dlp/docs/redacting-sensitive-data) : It returns the string with any sensitive data replaced by your chosen placeholder.
   - [Redacting sensitive data from images](https://cloud.google.com/dlp/docs/redacting-sensitive-data-images) : Google runs **Optical Character Recognition** to identify Infotypes, even **handwritten** text and redact them as shown in example
   - [Redacting Rows through Record Suppression](https://cloud.google.com/dlp/docs/deidentify-sensitive-data#record_transformations):  We can define Record Suppression Rules for RecordTransformations, by which sensitive records are removed from result
@@ -55,16 +50,14 @@ For more details about other supported formats like PDFs, Images, AVRO, CSV and 
 - [Java DLP GitHub](https://github.com/googleapis/java-dlp)
 - [Ruby DLP Github](https://github.com/googleapis/google-cloud-ruby/blob/master/google-cloud-dlp/README.md) : Part of the Complete Ruby Google API GitHub Project
 - [PHP DLP Github](https://github.com/googleapis/google-cloud-php-dlp)
-- [Dotnet C#](https://github.com/GoogleCloudPlatform/dotnet-docs-samples/tree/master/dlp/api)  : Part of the Complete Ruby Google API GitHub Project
+- [Dotnet C# Github](https://github.com/GoogleCloudPlatform/dotnet-docs-samples/tree/master/dlp/api)  : Part of the Complete Ruby Google API GitHub Project
 #### Notes
 - The above Client library is useful for integrating into existing web applications or Custom Data Pipeline code.
 - In addition to the above Client Libraries, Google Cloud DLP Inspection jobs, can be run and scheduled from the Console discussed below.
 - Google DLP is integrated to other products like **Google Data Fusion** connectors. Refer the [Qwiklabs tutorial](https://www.qwiklabs.com/focuses/12373?catalog_rank=%7B%22rank%22%3A1%2C%22num_filters%22%3A0%2C%22has_search%22%3Atrue%7D&parent=catalog&search_id=8100528) for more info
 #### Google Dataflow DLP Templates
 ​	Dataflow is a managed service for executing a wide variety of data processing patterns, based on Apache Beam Framework. For Continuous and Batch pipelines, Google Recommended way is to develop using **[Google DataFlow](https://cloud.google.com/dataflow)**. 
-
 There are many existing Google Dataflow Templates available, which can customized for our specific use case. Some of the examples are
-
 - [De-identification and re-identification of PII in large-scale datasets using Cloud DLP and Dataflow](https://cloud.google.com/solutions/de-identification-re-identification-pii-using-cloud-dlp)
 - [Relational Database Import to Big Query with Dataflow and DLP API](https://github.com/GoogleCloudPlatform/dlp-rdb-bq-import)
 - [Google Dataflow Template for Data Masking/Tokenization from Cloud Storage to BigQuery (using Cloud DLP)](https://cloud.google.com/dataflow/docs/guides/templates/provided-streaming#data-maskingtokenization-from-cloud-storage-to-bigquery-using-cloud-dlp)
@@ -73,7 +66,6 @@ Google DLP recently introduced DLP Console under **Security -> Data Loss Prevent
 *Note: We need to enable Cloud Data Loss Prevention (DLP) API in your project. If not it will be prompted*
 Here we can directly run DLP jobs which was earlier achieved through backend APIs. The Console also provides the JSON representation of Templates, which was earlier used to invoke the APIs.  Dataflow is a managed service for executing a wide variety of data processing patterns
  <img src="https://raw.githubusercontent.com/sarath-mec/smks-docker-hdp/master/screenshots/image-20201203010629031-new.png" alt="image-20201203010629031-new" style="zoom:67%;" />
-
 - ##### [Inspection Jobs](https://cloud.google.com/dlp/docs/creating-job-triggers)
   This can be used to inspect data in
   - Google Cloud Storage
@@ -104,7 +96,6 @@ Here we can directly run DLP jobs which was earlier achieved through backend API
 ## De-identify Transformation Techniques
 "De-identify", the term is sometimes confusing and is the general bucket of activities possible below often referred as mask/redact,obfuscate etc..
   > Note: There is a term **"re-identify",** which refers to Google DLP option to extract the original value which has been encrypted using Pseudonymization technique
-
 The **<u>*[De-identify Transformation Techniques](https://cloud.google.com/dlp/docs/transformations-reference)*</u>** available are
 - [Redaction](https://cloud.google.com/dlp/docs/transformations-reference#redaction): Deletes all or part of a detected sensitive value.
 ```
@@ -128,7 +119,6 @@ Output: My name is Alicia Abernathy, and my email address is ##########@#######.
 ## Crypto-based tokenization/Pseudonymization
 **[Pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization)** is a de-identification technique that replaces sensitive data values with cryptographically generated *tokens*. 
 These are generally used in use cases like
-
 - **Re-identify/Reverse** the Original value if we have the original key and secret. 
 - Maintain **referential integrity** of values, if used to de-identify foreign key/primary key columns in tables. This will ensure that joins would work as expected
 - **Format preserving encryption** By design, both the **character set and the length of the input value are preserved** in the output value. 
@@ -136,7 +126,6 @@ These are generally used in use cases like
   > - ***Cryptographic hashed*** values cannot be reversed, even though it maintains referential integrity. Also surrogate annotation is also not supported in the API
   > - **Context tweak:** A reference to a data field that "tweaks" the input value so that identical input values can be de-identified to different output values. The context tweak is optional when transforming a column of structured, or tabular data, with a `RecordTransformation`. 
   > - We have to use **DLP APIs programmatically** to reidentify the original data once encrypted using original key and secret
-
 Cloud DLP supports three techniques as below. These methods are summarized in the following table.
 |                                        | [**Deterministic encryption using AES-SIV**](https://cloud.google.com/dlp/docs/pseudonymization#aes-siv) | [**Format preserving encryption**](https://cloud.google.com/dlp/docs/pseudonymization#fpe-ffx) | [**Cryptographic hashing**](https://cloud.google.com/dlp/docs/pseudonymization#cryptographic-hashing) |
 | :------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
@@ -147,13 +136,9 @@ Cloud DLP supports three techniques as below. These methods are summarized in th
 | **Character set and length preserved** | ✗                                                            | ✓                                                            | ✗                                                            |
 | **Reversible**                         | ✓                                                            | ✓                                                            | ✗                                                            |
 | **Referential integrity**              | ✓                                                            | ✓                                                            | ✓                                                            |
-
 ## **Pricing**
-
 Cloud DLP content method pricing is billed based on bytes inspected, transformed. Price per GB is around 2-3 Dollars. Please see **[here](https://cloud.google.com/dlp/pricing)** for more details
-
 ##### [Keeping Costs Under Control](https://cloud.google.com/dlp/docs/best-practices-costs)
-
 - Use sampling to restrict the number of bytes inspected
 - Scan only data that has changed
 - Limit scans of files in Cloud Storage to only relevant files
