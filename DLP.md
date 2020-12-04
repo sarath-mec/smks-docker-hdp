@@ -1,4 +1,4 @@
-# Introduction to Google Cloud Data Loss Prevention
+# Google Cloud Data Loss Prevention (One Pager)
 ​	Google DLP solution landscape refers to the tools that is used to protect PII and sensitive data lying in cloud storages, databases and can even be expanded to inspect on-premise database as well. The blog article relates to summarize the Google DLP platform in minimal words and familiarize with Cloud DLP terminology and try to provide the best working examples. 
 ## Infotypes, Likelihood and Fine-Tuning
 #### Built-In Infotype Detectors
