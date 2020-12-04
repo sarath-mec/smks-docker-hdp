@@ -3,6 +3,7 @@
 ## Infotypes, Likelihood and Fine-Tuning
 #### Built-In Infotype Detectors
 ​	There are over 120 ***[built-in Infotype detectors](https://cloud.google.com/dlp/docs/concepts-infotypes#built-in).***  They include detectors for country- or region-specific sensitive data types as well as globally applicable data types.  Cloud DLP Infotype detection leverages various techniques **including pattern matching, checksums, machine-learning, context analysis, and others.** Some example Infotypes are listed below. For the complete list click ***[here](https://cloud.google.com/dlp/docs/infotypes-reference)***
+
 ###### Country- or region-specific sensitive data types 
 - *French* *Numéro d'Inscription au Répertoire (NIR)* (`FRANCE_NIR`)
 - UK driver's license number (`UK_DRIVERS_LICENSE_NUMBER`)
@@ -25,7 +26,7 @@ The likelihood buckets are `LIKELIHOOD_UNSPECIFIED`*[Default value; =~ POSSIBLE]
 > Note: ***Positive context*** is when the inclusion of certain characters, words, or phrases in proximity to a potentially matched pattern indicates to Cloud DLP that a match to the pattern is more likely. Similarly, ***negative context*** is when the inclusion of certain characters, words, or phrases in proximity to a pattern indicates that a match is less likely.
 #### Google DLP Live Demo
 ​	For a live demo of Google Cloud DLP in action, click below **[link](https://cloud.google.com/dlp/demo/#!/)**. It shows a running demo of **Free From Text Inspection** with **likelihood** for the **built-in Infotypes**, as discussed above. You can select the **INFOTYPES** available and **Likelihood filter** under **Options**
-<img src="https://github.com/sarath-mec/smks-docker-hdp/blob/master/screenshots/image-20201204100055627.png" alt="image-20201204100055627" style="zoom: 50%;" />
+<img src="C:\Users\sarsasid\AppData\Roaming\Typora\typora-user-images\image-20201204100055627.png" alt="image-20201204100055627" style="zoom: 50%;" />
 
 #### Fine-Tuning
 ​	In addition, Cloud DLP includes inspection rules, which enable you to fine-tune scan results by adding the following to existing built-in or custom infoType detector
@@ -71,24 +72,25 @@ There are many existing Google Dataflow Templates available, which can customize
 Google DLP recently introduced DLP Console under Security -> Data Loss Prevention. 
 *Note: We need to enable Cloud Data Loss Prevention (DLP) API in your project. If not it will be prompted*
 Here we can directly run DLP jobs which was earlier achieved through backend APIs. The Console also provides the JSON representation of Templates, which was earlier used to invoke the APIs.  Dataflow is a managed service for executing a wide variety of data processing patterns
- <img src="https://github.com/sarath-mec/smks-docker-hdp/blob/master/screenshots/image-20201203010629031-new.png" alt="iimage-20201203010629031-new" style="zoom:67%;" />
+ <img src="C:\Users\sarsasid\AppData\Roaming\Typora\typora-user-images\image-20201203010629031-new.png" alt="image-20201203010629031-new" style="zoom:67%;" />
+
 - ##### [Inspection Jobs](https://cloud.google.com/dlp/docs/creating-job-triggers)
   This can be used to inspect data in
   - Google Cloud Storage
   - Google BigQuery
   - Google Cloud Datastore
 - ##### [Re-identification risk analysis Jobs](https://cloud.google.com/dlp/docs/concepts-risk-analysis)
-Process of analyzing sensitive data to find properties that might increase the risk of subjects being identified, or of sensitive information about individuals being revealed. You can use risk analysis methods before de-identification to help determine an effective de-identification strategy, or after de-identification to monitor for any changes or outliers. This is more advanced concept and will be discussed in subsequent blogs.
+  Process of analyzing sensitive data to find properties that might increase the risk of subjects being identified, or of sensitive information about individuals being revealed. You can use risk analysis methods before de-identification to help determine an effective de-identification strategy, or after de-identification to monitor for any changes or outliers. This is more advanced concept and will be discussed in subsequent blogs.
   - k-anonymity
   - l-diversity
   - k-map
   - δ-presence
 - ##### [Templates](https://cloud.google.com/dlp/docs/concepts-templates)
-Useful for decoupling and store configuration information in a single place —like what you inspect for or de-identify—from the implementation of your requests. Once you define a template, we can reuse the template to inspect or re-identify data, in the jobs as well as in APIs
+  Useful for decoupling and store configuration information in a single place —like what you inspect for or de-identify—from the implementation of your requests. Once you define a template, we can reuse the template to inspect or re-identify data, in the jobs as well as in APIs
   - [Inspection Templates](https://cloud.google.com/dlp/docs/quickstart-create-template-inspect)
       Templates for persisting configuration information for inspection scan jobs, including what predefined or custom detectors to use. 
   - [De-identification Templates](https://cloud.google.com/dlp/docs/creating-templates-deid) 
-       Templates for saving configuration information for de-identification jobs, including both **infoType** and **record (structured dataset)** transformations. Even though the above link suggests creating template from backend, we can create the same from front-end UI as well. This will be disused in detail in our first use case
+      Templates for saving configuration information for de-identification jobs, including both **infoType** and **record (structured dataset)** transformations. Even though the above link suggests creating template from backend, we can create the same from front-end UI as well. This will be disused in detail in our first use case
 - ##### [Stored Infotype](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
   This is used to create Custom InfoType Detectors, as mentioned above including small custom dictionary, large custom dictionary and regular expression detectors
 - ##### [Available actions for DLP Jobs](https://cloud.google.com/dlp/docs/concepts-actions)
@@ -101,24 +103,24 @@ Useful for decoupling and store configuration information in a single place —l
   - **Notify by email** (inspection and risk jobs)
 ## De-identify Transformation Techniques
 "De-identify", the term is sometimes confusing and is the general bucket of activities possible below often referred as mask/redact,obfuscate etc..
-> Note: There is a term **"re-identify",** which refers to Google DLP option to extract the original value which has been encrypted using Pseudonymization technique
+  > Note: There is a term **"re-identify",** which refers to Google DLP option to extract the original value which has been encrypted using Pseudonymization technique
 
 The **<u>*[De-identify Transformation Techniques](https://cloud.google.com/dlp/docs/transformations-reference)*</u>** available are
 - [Redaction](https://cloud.google.com/dlp/docs/transformations-reference#redaction): Deletes all or part of a detected sensitive value.
-```
+  ```
 Input : My name is Alicia Abernathy, and my email address is aabernathy@example.com.
 Output: My name is Alicia Abernathy, and my email address is .
-```
+  ```
 - [Replacement](https://cloud.google.com/dlp/docs/transformations-reference#replacement): Replaces a detected sensitive value with a specified surrogate value.
-```
+  ```
 Input : My name is Alicia Abernathy, and my email address is aabernathy@example.com.
 Output: My name is Alicia Abernathy, and my email address is [fake@example.com].
-```
+  ```
 - [Masking](https://cloud.google.com/dlp/docs/transformations-reference#masking): Replaces a number of characters of a sensitive value with a specified surrogate character, such as a hash (#) or asterisk (*).
-```
+  ```
 Input : My name is Alicia Abernathy, and my email address is aabernathy@example.com.
 Output: My name is Alicia Abernathy, and my email address is ##########@#######.###.
-```
+  ```
 - [Crypto-based tokenization/Pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization): Encrypts the original sensitive data value using a cryptographic key. Cloud DLP supports several types of tokenization, including transformations that can be reversed, or "re-identified.". **This is a separate topic which will be discussed below**
 - [Bucketing](https://cloud.google.com/dlp/docs/concepts-bucketing): "Generalizes" a sensitive value by replacing it with a range of values. (For example, replacing a specific age with an age range, or temperatures with ranges corresponding to "Hot," "Medium," and "Cold.")
 - [Date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting): Shifts sensitive date values by a random amount of time. Shifting dates is usually done in context to an individual or an entity.
@@ -126,8 +128,9 @@ Output: My name is Alicia Abernathy, and my email address is ##########@#######.
 ## Crypto-based tokenization/Pseudonymization
 **[Pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization)** is a de-identification technique that replaces sensitive data values with cryptographically generated *tokens*. 
 These are generally used in use cases like
+
 - **Re-identify/Reverse** the Original value if we have the original key and secret. 
-- Maintain **referential integrity** of values, if used to de-identify foreign key/primary key columns in tables
+- Maintain **referential integrity** of values, if used to de-identify foreign key/primary key columns in tables. This will ensure that joins would work as expected
 - **Format preserving encryption** By design, both the **character set and the length of the input value are preserved** in the output value. 
   > - ***Surrogate annotation*** is the process of appending leading characters, used to understand the information stored in the encrypted form. Say for eg CC will be appended at the start of the encrypted value to show that it is an encrypted credit card number value.
   > - ***Cryptographic hashed*** values cannot be reversed, even though it maintains referential integrity. Also surrogate annotation is also not supported in the API
@@ -154,4 +157,3 @@ Cloud DLP content method pricing is billed based on bytes inspected, transformed
 - Use sampling to restrict the number of bytes inspected
 - Scan only data that has changed
 - Limit scans of files in Cloud Storage to only relevant files
-
