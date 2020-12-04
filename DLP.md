@@ -71,7 +71,7 @@ There are many existing Google Dataflow Templates available, which can customize
 Google DLP recently introduced DLP Console under Security -> Data Loss Prevention. 
 *Note: We need to enable Cloud Data Loss Prevention (DLP) API in your project. If not it will be prompted*
 Here we can directly run DLP jobs which was earlier achieved through backend APIs. The Console also provides the JSON representation of Templates, which was earlier used to invoke the APIs.  Dataflow is a managed service for executing a wide variety of data processing patterns
- <img src="https://github.com/sarath-mec/smks-docker-hdp/blob/master/screenshots/image-20201203010629031.png" alt="image-20201203010629031" style="zoom:67%;" />
+ <img src="https://github.com/sarath-mec/smks-docker-hdp/blob/master/screenshots/image-20201203010629031-new.png" alt="iimage-20201203010629031-new" style="zoom:67%;" />
 - ##### [Inspection Jobs](https://cloud.google.com/dlp/docs/creating-job-triggers)
   This can be used to inspect data in
   - Google Cloud Storage
