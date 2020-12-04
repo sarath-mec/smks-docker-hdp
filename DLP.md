@@ -122,20 +122,25 @@ These are generally used in use cases like
 - **Re-identify/Reverse** the Original value if we have the original key and secret. 
 - Maintain **referential integrity** of values, if used to de-identify foreign key/primary key columns in tables. This will ensure that joins would work as expected
 - **Format preserving encryption** By design, both the **character set and the length of the input value are preserved** in the output value. 
-  > - ***Surrogate annotation*** is the process of appending leading characters, used to understand the information stored in the encrypted form. Say for eg CC will be appended at the start of the encrypted value to show that it is an encrypted credit card number value.
-  > - ***Cryptographic hashed*** values cannot be reversed, even though it maintains referential integrity. Also surrogate annotation is also not supported in the API
-  > - **Context tweak:** A reference to a data field that "tweaks" the input value so that identical input values can be de-identified to different output values. The context tweak is optional when transforming a column of structured, or tabular data, with a `RecordTransformation`. 
-  > - We have to use **DLP APIs programmatically** to reidentify the original data once encrypted using original key and secret
-Cloud DLP supports three techniques as below. These methods are summarized in the following table.
-|                                        | [**Deterministic encryption using AES-SIV**](https://cloud.google.com/dlp/docs/pseudonymization#aes-siv) | [**Format preserving encryption**](https://cloud.google.com/dlp/docs/pseudonymization#fpe-ffx) | [**Cryptographic hashing**](https://cloud.google.com/dlp/docs/pseudonymization#cryptographic-hashing) |
-| :------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| **Encryption type**                    | [AES-SIV](https://tools.ietf.org/html/rfc5297)               | [FPE-FFX](https://en.wikipedia.org/wiki/Format-preserving_encryption) | [HMAC-SHA-256](https://tools.ietf.org/html/rfc4634)          |
-| **Supported input values**             | At least 1 char long; no character set limitations.          | At least 2 chars long; must be encoded as ASCII.             | Must be a string or an integer value.                        |
-| **Surrogate annotation**               | Optional.                                                    | Optional.                                                    | N/A                                                          |
-| **Context tweak**                      | Optional.                                                    | Optional.                                                    | N/A                                                          |
-| **Character set and length preserved** | ✗                                                            | ✓                                                            | ✗                                                            |
-| **Reversible**                         | ✓                                                            | ✓                                                            | ✗                                                            |
-| **Referential integrity**              | ✓                                                            | ✓                                                            | ✓                                                            |
+- ***Surrogate annotation*** is the process of appending leading characters, used to understand the information stored in the encrypted form. Say for eg CC will be appended at the start of the encrypted value to show that it is an encrypted credit card number value.
+- ***Cryptographic hashed*** values cannot be reversed, even though it maintains referential integrity. Also surrogate annotation is also not supported in the API
+- **Context tweak:** A reference to a data field that "tweaks" the input value so that identical input values can be de-identified to different output values. The context tweak is optional when transforming a column of structured, or tabular data, with a `RecordTransformation`. 
+- We have to use **DLP APIs programmatically** to reidentify the original data once encrypted using original key and secret
+- Cloud DLP supports three techniques as below. 
+
+These methods are summarized in the following table.
+
+| ** Deterministic encryption using AES-SIV** | **Format preserving encryption**                    | **Cryptographic hashing**                                    |                                                     |
+| :------------------------------------------ | :-------------------------------------------------- | :----------------------------------------------------------- | --------------------------------------------------- |
+| **Encryption type**                         | [AES-SIV](https://tools.ietf.org/html/rfc5297)      | [FPE-FFX](https://en.wikipedia.org/wiki/Format-preserving_encryption) | [HMAC-SHA-256](https://tools.ietf.org/html/rfc4634) |
+| **Supported input values**                  | At least 1 char long; no character set limitations. | At least 2 chars long; must be encoded as ASCII.             | Must be a string or an integer value.               |
+| **Surrogate annotation**                    | Optional.                                           | Optional.                                                    | N/A                                                 |
+| **Context tweak**                           | Optional.                                           | Optional.                                                    | N/A                                                 |
+| **Character set and length preserved**      | ✗                                                   | ✓                                                            | ✗                                                   |
+| **Reversible**                              | ✓                                                   | ✓                                                            | ✗                                                   |
+| **Referential integrity**                   | ✓                                                   | ✓                                                            | ✓                                                   |
+
+
 ## **Pricing**
 Cloud DLP content method pricing is billed based on bytes inspected, transformed. Price per GB is around 2-3 Dollars. Please see **[here](https://cloud.google.com/dlp/pricing)** for more details
 ##### [Keeping Costs Under Control](https://cloud.google.com/dlp/docs/best-practices-costs)
