@@ -3,7 +3,6 @@
 ## Infotypes, Likelihood and Fine-Tuning
 #### Built-In Infotype Detectors
 ​	There are over 120 ***[built-in Infotype detectors](https://cloud.google.com/dlp/docs/concepts-infotypes#built-in).***  They include detectors for country- or region-specific sensitive data types as well as globally applicable data types.  Cloud DLP Infotype detection leverages various techniques **including pattern matching, checksums, machine-learning, context analysis, and others.** Some example Infotypes are listed below. For the complete list click ***[here](https://cloud.google.com/dlp/docs/infotypes-reference)***
-
 ###### Country- or region-specific sensitive data types 
 - *French* *Numéro d'Inscription au Répertoire (NIR)* (`FRANCE_NIR`)
 - UK driver's license number (`UK_DRIVERS_LICENSE_NUMBER`)
@@ -26,7 +25,7 @@ The likelihood buckets are `LIKELIHOOD_UNSPECIFIED`*[Default value; =~ POSSIBLE]
 > Note: ***Positive context*** is when the inclusion of certain characters, words, or phrases in proximity to a potentially matched pattern indicates to Cloud DLP that a match to the pattern is more likely. Similarly, ***negative context*** is when the inclusion of certain characters, words, or phrases in proximity to a pattern indicates that a match is less likely.
 #### Google DLP Live Demo
 ​	For a live demo of Google Cloud DLP in action, click below **[link](https://cloud.google.com/dlp/demo/#!/)**. It shows a running demo of **Free From Text Inspection** with **likelihood** for the **built-in Infotypes**, as discussed above. You can select the **INFOTYPES** available and **Likelihood filter** under **Options**
-<img src="C:\Users\sarsasid\AppData\Roaming\Typora\typora-user-images\image-20201204100055627.png" alt="image-20201204100055627" style="zoom: 50%;" />
+<img src="https://github.com/sarath-mec/smks-docker-hdp/blob/master/screenshots/image-20201204100055627.png" alt="image-20201204100055627" style="zoom: 50%;" />
 
 #### Fine-Tuning
 ​	In addition, Cloud DLP includes inspection rules, which enable you to fine-tune scan results by adding the following to existing built-in or custom infoType detector
@@ -72,7 +71,7 @@ There are many existing Google Dataflow Templates available, which can customize
 Google DLP recently introduced DLP Console under Security -> Data Loss Prevention. 
 *Note: We need to enable Cloud Data Loss Prevention (DLP) API in your project. If not it will be prompted*
 Here we can directly run DLP jobs which was earlier achieved through backend APIs. The Console also provides the JSON representation of Templates, which was earlier used to invoke the APIs.  Dataflow is a managed service for executing a wide variety of data processing patterns
- <img src="C:\Users\sarsasid\AppData\Roaming\Typora\typora-user-images\image-20201203010629031.png" alt="image-20201203010629031" style="zoom:67%;" /><img src="C:\Users\sarsasid\AppData\Roaming\Typora\typora-user-images\image-20201203012359587.png" alt="image-20201203012359587" style="zoom:67%;" />
+ <img src="https://github.com/sarath-mec/smks-docker-hdp/blob/master/screenshots/image-20201203010629031.png" alt="image-20201203010629031" style="zoom:67%;" /><img src="https://github.com/sarath-mec/smks-docker-hdp/blob/master/screenshots/image-20201203012359587.png" alt="image-20201203012359587" style="zoom:67%;" />
 - ##### [Inspection Jobs](https://cloud.google.com/dlp/docs/creating-job-triggers)
   This can be used to inspect data in
   - Google Cloud Storage
