@@ -35,7 +35,7 @@ The likelihood buckets are `LIKELIHOOD_UNSPECIFIED`*[Default value; =~ POSSIBLE]
 ## Supported File Types
 Even though these below terms are confusing, it is interchangeably used, which will be clear once you start experimenting the features.
 #### De-identify
-​	De-identify is generally used as a term to transform sensitive text in your data. The De-identify transformation methods available are discussed later in this blog. There are generally two types of Text De-identification Transformation
+​	De-identify is generally used as a term to transform sensitive text in your data. The De-identify transformation methods available are discussed **later in this blog**. There are generally two types of Text De-identification Transformation
 - [InfoTypeTransformations](https://cloud.google.com/dlp/docs/deidentify-sensitive-data#infotype_transformations): Applied to values within **submitted free-form text** that are identified as a specific infoType.
 - [RecordTransformations](https://cloud.google.com/dlp/docs/deidentify-sensitive-data#record_transformations): Applied to values within **submitted tabular text data** that are identified as a specific infoType, or on an entire column of tabular data.
 #### Redaction
@@ -48,7 +48,7 @@ Even though these below terms are confusing, it is interchangeably used, which w
 For more details about other supported formats like PDFs, Images, AVRO, CSV and the Scan Methods used click **[here](https://cloud.google.com/dlp/docs/supported-file-types)**
 > *Note: Some format not available right now are excel, parquet, ORC etc*
 ## DLP Code Execution
-​	The lowest level of executing DLP **(metric for DLP billing also)** is by **[invoking REST APIs for a specific task.](https://cloud.google.com/dlp/docs/quickstart-json)**  The REST APIs available are mentioned **[here](https://cloud.google.com/dlp/docs/apis)**.  There are various [Client Libraries](https://cloud.google.com/dlp/docs/libraries) encapsulation available to invoke Cloud DLP API's in languages like C#, Go, Java, Node.js, PHP, Python, Ruby. 
+​	The lowest level of executing DLP **(metric for DLP billing also)** is by **[invoking REST APIs for a specific task.](https://cloud.google.com/dlp/docs/quickstart-json)**  The REST APIs available are mentioned **[here](https://cloud.google.com/dlp/docs/apis)**.  There are various [Client Libraries](https://cloud.google.com/dlp/docs/libraries) available to invoke Cloud DLP API's in languages like C#, Go, Java, Node.js, PHP, Python, Ruby. 
 - **[Node.js DLP Github](https://github.com/googleapis/nodejs-dlp)** : **Node.js** seems to be the popular and well maintained. 
 - [Python DLP Github](https://github.com/googleapis/python-dlp)
 - [Go DLP Github](https://github.com/googleapis/google-cloud-go) : Part of the Complete Go Google API GitHub Project
@@ -59,7 +59,7 @@ For more details about other supported formats like PDFs, Images, AVRO, CSV and 
 #### Notes
 - The above Client library is useful for integrating into existing web applications or Custom Data Pipeline code.
 - In addition to the above Client Libraries, Google Cloud DLP Inspection jobs, can be run and scheduled from the Console discussed below.
-- Google DLP is integrated to other products like **Google Data Fusion** connectors. Refer the [qwiklabs tutorial](https://www.qwiklabs.com/focuses/12373?catalog_rank=%7B%22rank%22%3A1%2C%22num_filters%22%3A0%2C%22has_search%22%3Atrue%7D&parent=catalog&search_id=8100528) for more info
+- Google DLP is integrated to other products like **Google Data Fusion** connectors. Refer the [Qwiklabs tutorial](https://www.qwiklabs.com/focuses/12373?catalog_rank=%7B%22rank%22%3A1%2C%22num_filters%22%3A0%2C%22has_search%22%3Atrue%7D&parent=catalog&search_id=8100528) for more info
 #### Google Dataflow DLP Templates
 ​	Dataflow is a managed service for executing a wide variety of data processing patterns, based on Apache Beam Framework. For Continuous and Batch pipelines, Google Recommended way is to develop using **[Google DataFlow](https://cloud.google.com/dataflow)**. 
 
@@ -69,7 +69,7 @@ There are many existing Google Dataflow Templates available, which can customize
 - [Relational Database Import to Big Query with Dataflow and DLP API](https://github.com/GoogleCloudPlatform/dlp-rdb-bq-import)
 - [Google Dataflow Template for Data Masking/Tokenization from Cloud Storage to BigQuery (using Cloud DLP)](https://cloud.google.com/dataflow/docs/guides/templates/provided-streaming#data-maskingtokenization-from-cloud-storage-to-bigquery-using-cloud-dlp)
 ## Data Loss Prevention Console 
-Google DLP recently introduced DLP Console under Security -> Data Loss Prevention. 
+Google DLP recently introduced DLP Console under **Security -> Data Loss Prevention.** 
 *Note: We need to enable Cloud Data Loss Prevention (DLP) API in your project. If not it will be prompted*
 Here we can directly run DLP jobs which was earlier achieved through backend APIs. The Console also provides the JSON representation of Templates, which was earlier used to invoke the APIs.  Dataflow is a managed service for executing a wide variety of data processing patterns
  <img src="https://raw.githubusercontent.com/sarath-mec/smks-docker-hdp/master/screenshots/image-20201203010629031-new.png" alt="image-20201203010629031-new" style="zoom:67%;" />
@@ -80,7 +80,7 @@ Here we can directly run DLP jobs which was earlier achieved through backend API
   - Google BigQuery
   - Google Cloud Datastore
 - ##### [Re-identification risk analysis Jobs](https://cloud.google.com/dlp/docs/concepts-risk-analysis)
-  Process of analyzing sensitive data to find properties that might increase the risk of subjects being identified, or of sensitive information about individuals being revealed. You can use risk analysis methods before de-identification to help determine an effective de-identification strategy, or after de-identification to monitor for any changes or outliers. This is more advanced concept and will be discussed in subsequent blogs.
+  Process of analyzing sensitive data to find properties that might increase the risk of subjects being identified, or of sensitive information about individuals being revealed. You can use risk analysis methods before de-identification to help determine an effective de-identification strategy, or after de-identification to monitor for any changes or outliers. This is **more advanced concept** and will be discussed in subsequent blogs.
   - k-anonymity
   - l-diversity
   - k-map
